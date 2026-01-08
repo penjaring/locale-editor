@@ -1,0 +1,32 @@
+{
+  "title": "Sign Language Vocabulary",
+  "home": "Home",
+  "mode": "View",
+  "views": "views",
+  "like": "likes",
+  "published": "Published",
+  "videoCounter": "Showing {{count}} of {{max}} videos",
+  "recommendedVideo": "Recommended Videos",
+  "search": {
+    "title": "Search & Filter",
+    "placeholder": "Search by title or creator...",
+    "reset": "Reset Filters"
+  },
+  "sortBy": {
+    "latest": "Latest",
+    "nameAz": "Name (A-Z)",
+    "popular": "Most Popular"
+  },
+  "info": {
+    "writer": "Creator"
+  },
+  "empty": {
+    "title": "Video not found",
+    "description": "No videos are available at this time."
+  },
+  "error": {
+    "title": "An error occurred while loading videos",
+    "description": "Please try again later or contact the administrator.",
+    "refresh": "Reload"
+  }
+}

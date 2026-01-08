@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Locale Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            padding: 0 20px;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab:hover {
+            color: #495057;
+            background: #e9ecef;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .file-section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .file-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        .file-header:hover {
+            background: #e9ecef;
+        }
+
+        .file-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chevron {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #6c757d;
+            transition: transform 0.3s;
+        }
+
+        .file-content.expanded + .file-header .chevron,
+        .file-header:has(+ .file-content.expanded) .chevron {
+            transform: rotate(180deg);
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-download {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-download:hover {
+            background: #218838;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(40,167,69,0.3);
+        }
+
+        .btn-toggle {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-toggle:hover {
+            background: #5a6268;
+        }
+
+        .file-content {
+            padding: 20px;
+            display: none;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .file-content.expanded {
+            display: block;
+        }
+
+        .key-pair {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+
+        .key-name {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .input-field {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+
+        .input-field.readonly {
+            background: #e9ecef;
+            cursor: not-allowed;
+        }
+
+        .nested-key {
+            margin-left: 20px;
+            padding-left: 15px;
+            border-left: 2px solid #dee2e6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .upload-section {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .upload-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .upload-btn:hover {
+            background: #5568d3;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .instructions {
+            padding: 20px;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .instructions h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .instructions p {
+            color: #856404;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="instructions">
+            <h3>📋 Petunjuk</h3>
+            <p>
+                Buat perubahan di kolom kanan, lalu klik tombol unduh untuk menyimpan perubahan Anda.
+            </p>
+            <p>
+                Teks yang berada di dalam kurung kurawal (contohnya <strong>{{title}}</strong>) atau yang diawali dengan <strong>$t</strong> (contohnya <strong>$t({{filterBy}}, \"count\": 1)</strong>) tidak perlu dirubah.
+            </p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="pecan">Pecan</button>
+            <button class="tab" data-tab="admin">Admin</button>
+            <button class="tab" data-tab="web">Web</button>
+        </div>
+
+        <div id="pecan" class="tab-content active">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Memuat locale Pecan...</p>
+            </div>
+        </div>
+
+        <div id="admin" class="tab-content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Memuat locale Admin...</p>
+            </div>
+        </div>
+
+        <div id="web" class="tab-content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Memuat locale Web...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Define the structure of locale files for each folder
+        const localeStructure = {
+            pecan: ['auth', 'books', 'common', 'dashboard', 'landing', 'reading', 'translation', 'videos'],
+            admin: ['audioVideoBookPages', 'auth', 'bookPages', 'common', 'documentPages', 'insightsPages', 
+                    'kosaisyaratPages', 'languagePages', 'pages', 'rolePages', 'userPages'],
+            web: ['common', 'document', 'kosaisyarat', 'portal']
+        };
+
+        // Store loaded data
+        const localeData = {};
+
+        // Initialize tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Load data if not already loaded
+                if (!localeData[tabId]) {
+                    loadLocaleFolder(tabId);
+                }
+            });
+        });
+
+        // Load locale folder data
+        async function loadLocaleFolder(folder) {
+            const container = document.getElementById(folder);
+            const files = localeStructure[folder];
+            
+            localeData[folder] = {};
+            
+            try {
+                // Load all JSON files for this folder
+                for (const file of files) {
+                    const response = await fetch(`locales/${folder}/id/${file}.json`);
+                    if (response.ok) {
+                        localeData[folder][file] = await response.json();
+                    } else {
+                        console.error(`Failed to load ${file}.json`);
+                        localeData[folder][file] = {};
+                    }
+                }
+                
+                // Render the UI
+                renderLocaleFolder(folder, container);
+            } catch (error) {
+                console.error(`Error loading ${folder}:`, error);
+                container.innerHTML = `
+                    <div class="instructions">
+                        <h3>⚠️ Tidak dapat memuat berkas</h3>
+                        <p>
+                            Berkas locale tidak dapat dimuat secara otomatis. File HTML ini perlu dijalankan 
+                            dari web server untuk memuat berkas JSON. Anda dapat:
+                        </p>
+                        <ul style="margin-top: 10px; margin-left: 20px;">
+                            <li>Jalankan web server lokal (misal, <code>python -m http.server</code>)</li>
+                            <li>Atau modifikasi script untuk menyematkan data JSON secara langsung</li>
+                        </ul>
+                    </div>
+                `;
+            }
+        }
+
+        // Render locale folder UI
+        function renderLocaleFolder(folder, container) {
+            const files = localeStructure[folder];
+            let html = '';
+            
+            files.forEach(fileName => {
+                const data = localeData[folder][fileName] || {};
+                html += `
+                    <div class="file-section" data-folder="${folder}" data-file="${fileName}">
+                        <div class="file-header" onclick="toggleSection(this)">
+                            <div class="file-title">
+                                <span class="chevron"></span>
+                                ${fileName}.json
+                            </div>
+                            <div class="file-actions">
+                                <button class="btn btn-download" onclick="downloadFile(event, '${folder}', '${fileName}')">
+                                    💾 Unduh
+                                </button>
+                            </div>
+                        </div>
+                        <div class="file-content">
+                            ${renderKeyPairs(data, '')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Render key-value pairs recursively
+        function renderKeyPairs(obj, prefix) {
+            let html = '';
+            
+            for (const [key, value] of Object.entries(obj)) {
+                const fullKey = prefix ? `${prefix}.${key}` : key;
+                
+                if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                    html += `
+                        <div class="key-pair ${prefix ? 'nested-key' : ''}">
+                            <div class="key-name">${fullKey}</div>
+                            ${renderKeyPairs(value, fullKey)}
+                        </div>
+                    `;
+                } else {
+                    const valueStr = typeof value === 'string' ? value : JSON.stringify(value);
+                    html += `
+                        <div class="key-pair ${prefix ? 'nested-key' : ''}">
+                            <div class="key-name">${escapeHtml(fullKey)}</div>
+                            <div class="input-group">
+                                <div class="input-wrapper">
+                                    <label class="input-label">Asli</label>
+                                    <input type="text" 
+                                           class="input-field readonly" 
+                                           value="${escapeAttribute(valueStr)}" 
+                                           readonly>
+                                </div>
+                                <div class="input-wrapper">
+                                    <label class="input-label">Edit</label>
+                                    <input type="text" 
+                                           class="input-field" 
+                                           data-key="${escapeAttribute(fullKey)}"
+                                           value="${escapeAttribute(valueStr)}"
+                                           onchange="updateValue('${escapeAttribute(fullKey)}', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            return html;
+        }
+
+        // Toggle section expand/collapse
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('expanded');
+        }
+
+        // Update value in the data structure
+        function updateValue(key, value) {
+            // This is handled inline, values are read when downloading
+        }
+
+        // Download edited JSON file
+        function downloadFile(event, folder, fileName) {
+            event.stopPropagation();
+            
+            const section = event.target.closest('.file-section');
+            const inputs = section.querySelectorAll('.input-field:not(.readonly)');
+            
+            // Build the updated JSON object
+            const updatedData = {};
+            
+            inputs.forEach(input => {
+                const key = input.getAttribute('data-key');
+                const value = input.value;
+                setNestedValue(updatedData, key, value);
+            });
+            
+            // Create and download the file
+            const jsonStr = JSON.stringify(updatedData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${fileName}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Set nested value in object using dot notation
+        function setNestedValue(obj, path, value) {
+            const keys = path.split('.');
+            let current = obj;
+            
+            for (let i = 0; i < keys.length - 1; i++) {
+                const key = keys[i];
+                if (!current[key]) {
+                    current[key] = {};
+                }
+                current = current[key];
+            }
+            
+            current[keys[keys.length - 1]] = value;
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Escape attribute values
+        function escapeAttribute(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        // Load initial data
+        loadLocaleFolder('pecan');
+    </script>
+</body>
+</html>

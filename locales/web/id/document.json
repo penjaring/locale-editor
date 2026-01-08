@@ -1,0 +1,31 @@
+{
+  "title": "Dokumen Strategis Kebahasaan dan Kesastraan",
+  "pencarian": "Pencarian & Filter",
+  "searchPlaceholder": "Cari dokumen...",
+  "selectYear": "Pilih Tahun",
+  "loadingYears": "Memuat tahun...",
+  "noYears": "Tidak ada tahun tersedia",
+  "loadingCategories": "Memuat kategori...",
+  "selectCategory": "Pilih Kategori",
+  "noCategories": "Tidak ada kategori",
+  "clearFilters": "Hapus Filter",
+  "search": "Pencarian",
+  "year": "Tahun",
+  "category": "Kategori",
+  "displayingDocuments": "Menampilkan",
+  "of": "dari",
+  "loadingDocuments": "Memuat dokumen...",
+  "detail": {
+    "tahun": "Tahun",
+    "kategori": "Kategori",
+    "dilihat": "Dilihat",
+    "diunduh": "Diunduh",
+    "diunggah": "Diunggah",
+    "deskripsi": "Deskripsi",
+    "tanpaKategori": "Tanpa Kategori",
+    "kali": "kali",
+    "bukaDokumen": "Buka Dokumen",
+    "unduh": "Unduh",
+    "lihatDokumen": "Lihat Dokumen"
+  }
+}

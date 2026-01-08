@@ -1,0 +1,73 @@
+{
+  "pageHeader": "Halaman Membaca",
+  "loadingBook": "Memuat buku...",
+  "preparingPages": "Menyiapkan halaman...",
+  "loadBookFailed": "Gagal memuat buku",
+  "readHelper": {
+    "home": "Beranda",
+    "zoomIn": "Perbesar",
+    "zoomOut": "Perkecil",
+    "zoomMax": "Zoom Maksimum Tercapai",
+    "zoomMin": "Zoom Minimum Tercapai",
+    "zoomReset": "Atur Ulang Zoom",
+    "zoom": "Zoom",
+    "more": "Lainnya",
+    "firstPage": "Menuju Halaman Pertama",
+    "lastPage": "Menuju Halaman Terakhir",
+    "download": "Unduh PDF",
+    "share": "Bagikan",
+    "enterFullscreen": "Masuk Mode Layar Penuh",
+    "closeFullscreen": "Tutup Mode Layar Penuh",
+    "report": "Laporkan"
+  },
+  "copyrightSection": {
+    "title": "Buku ini memiliki Hak Cipta",
+    "description": "Kamu sedang membaca buku berlisensi komersil. Pembajakan adalah tindakan ilegal. Jika konten ini digandakan, direkam, dan dipublikasikan, pelanggar akan menghadapi konsekuensi secara penuh sesuai hukum yang berlaku.",
+    "accept": "Mengerti"
+  },
+  "unsupported": {
+    "title": "Ukuran layar tidak didukung",
+    "description": "Layar ini terlalu kecil untuk membaca buku. Harap putar perangkat ke mode lanskap atau gunakan perangkat dengan layar yang lebih besar."
+  },
+  "landscapePrompt": {
+    "title": "Mohon putar perangkat Anda",
+    "description": "Untuk pengalaman membaca yang lebih baik, gunakan mode lanskap"
+  },
+  "outFocus": {
+    "title": "Ayo Kembali Membaca!",
+    "description": "Sepertinya perhatian Anda sedang teralihkan, klik/ketuk dimana saja untuk lanjut membaca.",
+    "descriptionLine1": "Sepertinya perhatian Anda sedang teralihkan,",
+    "descriptionLine2": "klik/ketuk dimana saja",
+    "descriptionLine3": "untuk lanjut membaca."
+  },
+  "downloadConfirm": {
+    "title": "Unduh Buku?",
+    "descriptionSmall": "Ini akan mengunduh buku {{bookName}} (perkiraan ukuran {{size}}, {{pageCount}} halaman).",
+    "descriptionLarge": "⚠️ Buku ini berukuran besar dengan {{pageCount}} halaman (perkiraan ukuran {{size}}). Proses unduhan mungkin memakan waktu beberapa menit.",
+    "confirm": "Unduh",
+    "cancel": "Batal"
+  },
+  "downloadState": {
+    "continue": "Lanjutkan",
+    "cancel": "Batalkan",
+    "canceled": "Unduhan dibatalkan",
+    "licensed": "Buku berlisensi tidak dapat diunduh",
+    "loading": "Mengunduh...",
+    "generate": "Membuat dokumen PDF...",
+    "generateDirectURL": "Membuat dokumen PDF dengan tautan langsung...",
+    "warningSize": "Buku ini memiliki {{pageCount}} halaman (perkiraan ukuran {{estimatedSize}}). Proses unduhan mungkin memakan waktu beberapa menit pada koneksi lambat.",
+    "finalize": "Menyelesaikan pembuatan PDF...",
+    "success": "Berhasil mengunduh {{filename}}",
+    "downloadingPage": "Mengunduh halaman {{i}}-{{batchEnd}} dari {{total}}...",
+    "downloaded": "Telah mengunduh {{batchEnd}} dari {{total}} halaman",
+    "noPages": "Buku tidak memiliki halaman untuk diunduh",
+    "noPreview": "Halaman {{pageNumber}} tidak memiliki gambar pratinjau",
+    "failedLoad": "Gagal memuat halaman buku. Periksa koneksi internet Anda.",
+    "failedLoadPage": "Gagal memuat halaman {{pageNumber}}",
+    "failedFetch": "Gagal mengambil halaman {{pageNumber}}",
+    "failedGenerate": "Gagal membuat PDF",
+    "failedDownload": "Gagal mengunduh buku",
+    "missingImage": "Data gambar hilang untuk halaman {{pageNumber}}",
+    "memoryIssue": "Memori tidak cukup untuk membuat PDF. Coba unduh buku yang lebih kecil atau gunakan peramban di desktop."
+  }
+}

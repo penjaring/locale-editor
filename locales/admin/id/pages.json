@@ -1,0 +1,23 @@
+{
+  "login": {
+    "title": "Masuk - Leavefy",
+    "description": "Masuk ke akun Leavefy Anda"
+  },
+  "dashboard": {
+    "title": "Dashboard - Leavefy",
+    "description": "Dashboard utama Leavefy",
+    "welcome": "Selamat datang di dashboard"
+  },
+  "profile": {
+    "title": "Profil - Leavefy",
+    "description": "Kelola profil Anda",
+    "personalInfo": "Informasi Pribadi",
+    "accountSettings": "Pengaturan Akun"
+  },
+  "notFound": {
+    "title": "Halaman Tidak Ditemukan - Leavefy",
+    "description": "Halaman yang Anda cari tidak ditemukan",
+    "message": "Halaman tidak ditemukan",
+    "backToHome": "Kembali ke Beranda"
+  }
+}

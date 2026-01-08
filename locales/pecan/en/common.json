@@ -1,0 +1,33 @@
+{
+  "app": {
+    "name": "Penjaring",
+    "title": "Penerjemahan Daring",
+    "description": "Penerjemahan Daring",
+    "copyright": "Copyright"
+  },
+  "languages": {
+    "id": "Bahasa Indonesia",
+    "en": "English"
+  },
+  "switchLanguage": "Switch Language",
+  "gov": "Kemendikdasmen",
+  "govUnit": "Badan Pengembangan dan Pembinaan Bahasa",
+  "govUnitEn": "Language Development and Promotion Board",
+  "govFull": "Ministry of Primary and Secondary Education",
+  "govLine1": "BADAN PENGEMBANGAN",
+  "govLine2": "DAN PEMBINAAN BAHASA",
+  "govLine3": "KEMENDIKDASMEN",
+  "govAddress": "Kawasan Indonesia Peace and Security Center (IPSC) Jalan Anyar Km. 4, Sukahati, Citeureup, Kabupaten Bogor, Jawa Barat",
+  "govAddressLine1": "Kawasan Indonesia Peace and Security Center (IPSC)",
+  "govAddressLine2": "Jalan Anyar Km. 4, Sukahati, Citeureup, Kabupaten Bogor, Jawa Barat",
+  "govTelephone": "(021) 29099245",
+  "govEmail": "penerjemahan(at)kemendikdasmen.go.id",
+  "pagination": {
+    "next": "Next",
+    "previous": "Previous",
+    "more": "More pages",
+    "perPage": "Per page:",
+    "updating": "Updating...",
+    "result": "Showing {{startItem}} to {{endItem}} of {{totalItems}} results"
+  }
+}

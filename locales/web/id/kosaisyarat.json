@@ -1,0 +1,32 @@
+{
+  "title": "Kosakata Isyarat",
+  "home": "Beranda",
+  "mode": "Tampilan",
+  "views": "tayangan",
+  "like": "suka",
+  "published": "Dipublikasikan",
+  "videoCounter": "Menampilkan {{count}} dari {{max}} video",
+  "recommendedVideo": "Video Rekomendasi",
+  "search": {
+    "title": "Cari & Filter",
+    "placeholder": "Cari berdasarkan judul atau pembuat...",
+    "reset": "Reset Filter"
+  },
+  "sortBy": {
+    "latest": "Terbaru",
+    "nameAz": "Nama (A-Z)",
+    "popular": "Terpopuler"
+  },
+  "info": {
+    "writer": "Pembuat"
+  },
+  "empty": {
+    "title": "Video tidak ditemukan",
+    "description": "Tidak ada video yang tersedia saat ini."
+  },
+  "error": {
+    "title": "Terjadi kesalahan saat memuat video",
+    "description": "Silakan coba lagi nanti atau hubungi administrator.",
+    "refresh": "Muat Ulang"
+  }
+}

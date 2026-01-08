@@ -1,0 +1,92 @@
+{
+  "dashboard": {
+    "title": "Analitik",
+    "description": "Lacak pengunjung dan performa website Anda",
+    "error": "Gagal memuat analitik",
+    "errorDescription": "Silakan coba lagi nanti atau hubungi dukungan"
+  },
+  "stats": {
+    "visitors": "Pengunjung",
+    "visits": "Kunjungan",
+    "views": "Tampilan",
+    "bounceRate": "Rasio pentalan",
+    "visitDuration": "Durasi kunjungan",
+    "vsLastPeriod": "vs periode sebelumnya"
+  },
+  "filters": {
+    "filter": "Filter",
+    "advancedFilters": "Filter Lanjutan",
+    "description": "Filter data analitik berdasarkan parameter tertentu",
+    "today": "Hari ini",
+    "last24h": "24 jam terakhir",
+    "thisWeek": "Minggu ini",
+    "last7days": "7 hari terakhir",
+    "thisMonth": "Bulan ini",
+    "last30days": "30 hari terakhir",
+    "last90days": "90 hari terakhir",
+    "thisYear": "Tahun ini",
+    "last6months": "6 bulan terakhir",
+    "last12months": "12 bulan terakhir",
+    "allTime": "Semua waktu",
+    "customRange": "Rentang khusus",
+    "url": "URL",
+    "referrer": "Rujukan",
+    "title": "Judul",
+    "browser": "Browser",
+    "os": "OS",
+    "device": "Perangkat",
+    "country": "Negara",
+    "region": "Wilayah",
+    "city": "Kota",
+    "clearAll": "Hapus semua",
+    "cancel": "Batal",
+    "apply": "Terapkan filter"
+  },
+  "pages": {
+    "title": "Halaman",
+    "path": "Jalur",
+    "entry": "Masuk",
+    "exit": "Keluar",
+    "more": "Lebih banyak",
+    "error": "Gagal memuat halaman",
+    "empty": "Tidak ada data tersedia"
+  },
+  "location": {
+    "title": "Lokasi",
+    "countries": "Negara",
+    "regions": "Wilayah",
+    "cities": "Kota",
+    "more": "Lebih banyak",
+    "error": "Gagal memuat lokasi",
+    "empty": "Tidak ada data tersedia",
+    "unknown": "Tidak diketahui"
+  },
+  "environment": {
+    "title": "Lingkungan",
+    "browsers": "Browser",
+    "os": "OS",
+    "devices": "Perangkat",
+    "more": "Lebih banyak",
+    "error": "Gagal memuat lingkungan",
+    "empty": "Tidak ada data tersedia"
+  },
+  "modal": {
+    "title": "Metrik",
+    "search": "Cari...",
+    "export": "Ekspor",
+    "error": "Gagal memuat data",
+    "empty": "Tidak ada data tersedia",
+    "path": "Jalur",
+    "name": "Nama",
+    "visitors": "Pengunjung",
+    "showing": "Menampilkan {{count}} hasil"
+  },
+  "visitor": {
+    "today": "Hari Ini",
+    "thisMonth": "Bulan Ini",
+    "thisYear": "Tahun Ini",
+    "overall": "Semua Waktu",
+    "loading": "Memuat...",
+    "error": "Gagal memuat"
+  }
+}

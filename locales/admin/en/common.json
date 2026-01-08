@@ -1,0 +1,32 @@
+{
+  "app": {
+    "title": "Penjaring Admin",
+    "description": "Penjaring Admin Dashboard",
+    "copyright": "Copyright © 2025"
+  },
+  "gov": "Kemendikdasmen",
+  "govUnit": "Language Development and Promotion Board",
+  "govFull": "Ministry of Primary and Secondary Education",
+  "dashboard": {
+    "underConstruction": "Under Construction",
+    "underDevelopment": "This page is under development"
+  },
+  "sidebar": {
+    "group": {
+      "application": "Application",
+      "settings": "Settings"
+    },
+    "dashboard": "Dashboard",
+    "visitors": "Visitors",
+    "books": "Books",
+    "audioVideo": "Audio Video Books",
+    "documents": "Language Documents",
+    "kosaisyarat": "Kosaisyarat",
+    "languages": "Languages",
+    "users": "Users",
+    "roles": "Roles",
+    "settings": "Settings",
+    "settingsGeneral": "General",
+    "settingsSystem": "System"
+  }
+}

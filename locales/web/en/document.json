@@ -1,0 +1,31 @@
+{
+  "title": "Strategic Documents on Language and Literature",
+  "pencarian": "Search & Filter",
+  "searchPlaceholder": "Search documents...",
+  "selectYear": "Select Year",
+  "loadingYears": "Loading years...",
+  "noYears": "No years available",
+  "loadingCategories": "Loading categories...",
+  "selectCategory": "Select Category",
+  "noCategories": "No categories",
+  "clearFilters": "Clear Filters",
+  "search": "Search",
+  "year": "Year",
+  "category": "Category",
+  "displayingDocuments": "Displaying",
+  "of": "of",
+  "loadingDocuments": "Loading documents...",
+  "detail": {
+    "tahun": "Year",
+    "kategori": "Category",
+    "dilihat": "Views",
+    "diunduh": "Downloads",
+    "diunggah": "Uploaded",
+    "deskripsi": "Description",
+    "tanpaKategori": "No Category",
+    "kali": "times",
+    "bukaDokumen": "Open Document",
+    "unduh": "Download",
+    "lihatDokumen": "View Document"
+  }
+}

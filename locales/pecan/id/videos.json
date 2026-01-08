@@ -1,0 +1,71 @@
+{
+  "title": "$t(landing:navbar.videos)",
+  "video": "video",
+  "videoCounter": "{{count}} dari {{max}} $t(video, {\"count\": {{count}} })",
+  "mode": "Mode",
+  "recommendedVideo": {
+    "title": "Video Rekomendasi",
+    "empty": "Belum ada video rekomendasi untuk video ini",
+    "error": "Video rekomendasi tidak dapat dimuat"
+  },
+  "like": "disukai",
+  "likeAction": "Suka",
+  "unlikeAction": "Batal Suka",
+  "views": "dilihat",
+  "toasts": {
+    "videoLiked": "Video disukai!",
+    "videoAlreadyLiked": "Anda sudah menyukai video ini",
+    "likeRemoved": "Suka dihapus",
+    "videoNotLiked": "Anda belum menyukai video ini",
+    "likeError": "Tidak dapat menyukai video. Silakan coba lagi.",
+    "unlikeError": "Tidak dapat menghapus suka. Silakan coba lagi.",
+    "pleaseSignIn": "Silakan masuk untuk menyukai video"
+  },
+  "published": "Diunggah pada",
+  "info": {
+    "writer": "Penulis",
+    "illustrator": "Ilustrator",
+    "translator": "Penerjemah",
+    "narator": "Narator",
+    "signLanguageInterpreter": "Juru Bahasa Isyarat",
+    "publisherSourcebook": "Penerbit Buku Sumber"
+  },
+  "search": {
+    "title": "Pencarian & Penyaringan",
+    "placeholder": "Cari berdasarkan kata kunci...",
+    "reset": "Hapus Penyaringan"
+  },
+  "searchField": {
+    "label": "Cari di",
+    "title": "Judul",
+    "author": "Penulis",
+    "narrator": "Narator",
+    "illustrator": "Ilustrator",
+    "translator": "Penerjemah",
+    "signLanguageInterpreter": "Juru Bahasa Isyarat",
+    "publisher": "Penerbit"
+  },
+  "sortBy": {
+    "title": "Urutkan",
+    "latest": "Terbaru",
+    "popular": "Terpopuler",
+    "likes": "Paling Disukai",
+    "name": "Judul"
+  },
+  "sortOrder": {
+    "asc": "Menaik",
+    "desc": "Menurun"
+  },
+  "empty": {
+    "title": "Video tidak ditemukan",
+    "description": "Coba ubah kriteria pencarian atau filter Anda.",
+    "notFound": "Video yang kamu cari tidak dapat dimuat atau ditemukan."
+  },
+  "error": {
+    "title": "Gagal memuat video",
+    "description": "Terjadi kesalahan saat memuat data.",
+    "refresh": "Perbaharui",
+    "reset": "Hapus filter dan coba lagi"
+  },
+  "home": "Beranda"
+}

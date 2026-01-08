@@ -1,0 +1,98 @@
+{
+  "toggle": "Toggle Menu",
+  "follow": "Ikuti Kami",
+  "hero": {
+    "title": "Buku Ajaib untuk Anak Hebat",
+    "titleLine1": "Buku Ajaib",
+    "titleLine2": "untuk Anak Hebat",
+    "description": "Temukan cerita-cerita yang menarik, dan mulailah petualangan yang menakjubkan. Cocok untuk semua tingkat membaca, mulai dari pemula hingga pembaca yang mahir.",
+    "start": "Mulai Baca",
+    "search": "Cari Buku"
+  },
+  "search": {
+    "title": "Cari",
+    "description": "Cari Buku",
+    "placeholder": "Cari Buku..."
+  },
+  "navbar": {
+    "dashboard": "Koleksi Saya",
+    "home": "Beranda",
+    "videos": "Buku Audio/Video",
+    "profile": "Profil",
+    "login": "Masuk",
+    "manageAccount": "Kelola Akun",
+    "logout": "Keluar"
+  },
+  "books": {
+    "title": "Buku",
+    "classification": "Jenjang Pembaca",
+    "category": "Kategori",
+    "more": "Lainnya",
+    "popular": {
+      "title": "Buku Populer",
+      "tagline": "Terpopuler",
+      "description": "Disukai oleh banyak anak-anak!"
+    },
+    "limited": {
+      "title": "Buku Edisi Terbatas",
+      "tagline": "Edisi Terbatas",
+      "description": "Ayo baca selagi masih tersedia!"
+    },
+    "latest": {
+      "title": "Buku Terbaru",
+      "tagline": "Terbaru",
+      "description": "Cerita baru hanya untuk kamu!"
+    },
+    "licensedBooks": "Buku Edisi Terbatas",
+    "unlicensedBooks": "Buku Edisi Umum",
+    "foreignBooks": "Buku Berbahasa Asing",
+    "localBooks": "Buku Dwibahasa"
+  },
+  "categories": {
+    "error": {
+      "title": "Gagal Memuat Kategori",
+      "description": "Tidak dapat mengambil kategori buku saat ini.",
+      "refresh": "Perbaharui"
+    },
+    "empty": {
+      "title": "Tidak Ada Kategori Tersedia",
+      "description": "Saat ini tidak ada kategori buku untuk ditampilkan."
+    }
+  },
+  "footer": {
+    "information": "Tautan Informasi",
+    "about": "Tentang Kami",
+    "partners": "Mitra Kami",
+    "faq": "Soal Sering Ditanya (SSD)",
+    "contact": "Hubungi Kami"
+  },
+  "statistics": {
+    "title": "Statistik Pengunjung",
+    "reader": "Pembaca",
+    "language": "Bahasa",
+    "today": "Hari ini",
+    "month": "Bulan ini",
+    "year": "Tahun ini",
+    "overall": "Keseluruhan"
+  },
+  "error": {
+    "title": "Ups! Ada yang tidak beres",
+    "badge": "Terjadi Kesalahan",
+    "description": "Sepertinya aplikasi mengalami kendala teknis",
+    "detail": "Detail Galat",
+    "type": "Tipe",
+    "homePage": "Kembali ke Beranda",
+    "previousPage": "Halaman Sebelumnya",
+    "refresh": "Segarkan",
+    "tryagain": "Coba Lagi",
+    "page404": {
+      "title": "Halaman Tidak Ditemukan",
+      "description": "Sepertinya halaman yang Anda cari telah berpindah atau tidak ada"
+    }
+  },
+  "warningDevTools": {
+    "title": "Terdeteksi Membuka Alat Pengembang",
+    "description": "Kami mendeteksi bahwa alat pengembang (Developer Tools) atau konsol sedang terbuka. Silakan tutup alat tersebut untuk melanjutkan penggunaan halaman ini.",
+    "info": "Tindakan keamanan ini membantu melindungi konten di halaman ini. Jika Anda yakin ini adalah kesalahan, silakan hubungi dukungan."
+  }
+}

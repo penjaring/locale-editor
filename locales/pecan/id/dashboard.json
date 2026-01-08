@@ -1,0 +1,108 @@
+{
+  "title": "Dasbor",
+  "tabs": {
+    "collection": "Koleksi Buku",
+    "drafts": "Draf Saya",
+    "reviews": "Telaah Buku",
+    "account": "Kelola Akun"
+  },
+  "collection": {
+    "title": "Koleksi Buku Saya",
+    "subtitle": "Buku yang telah Anda baca",
+    "empty": {
+      "title": "Belum ada buku di koleksi Anda",
+      "description": "Mulai membaca buku untuk membangun koleksi pribadi Anda"
+    },
+    "rowsPerPage": "Baris per halaman:",
+    "error": {
+      "title": "Gagal memuat koleksi buku",
+      "message": "Terjadi kesalahan saat memuat koleksi buku Anda. Silakan coba lagi nanti."
+    },
+    "pagination": {
+      "showing": "Menampilkan {{start}}-{{end}} dari {{total}} buku",
+      "page": "Halaman {{current}} dari {{total}}"
+    }
+  },
+  "drafts": {
+    "title": "Draf Terjemahan Saya",
+    "subtitle": "Buku yang sedang Anda terjemahkan",
+    "rowsPerPage": "Baris per halaman:",
+    "loading": "Memuat draf...",
+    "deleteSuccess": "Draf berhasil dihapus",
+    "empty": {
+      "title": "Tidak ada draf ditemukan",
+      "description": "Anda belum memiliki draf terjemahan saat ini"
+    },
+    "error": {
+      "title": "Gagal memuat draf",
+      "message": "Terjadi kesalahan saat memuat draf terjemahan Anda. Silakan coba lagi nanti."
+    },
+    "table": {
+      "translationTitle": "Judul Terjemahan",
+      "bookTitle": "Judul Buku",
+      "targetLanguage": "Bahasa Target",
+      "description": "Deskripsi",
+      "createdAt": "Dibuat Pada",
+      "updatedAt": "Diperbarui Pada",
+      "actions": "Aksi"
+    },
+    "pagination": {
+      "showing": "Menampilkan {{start}} hingga {{end}} dari {{total}} draf",
+      "page": "Halaman {{current}} dari {{total}}",
+      "previous": "Sebelumnya",
+      "next": "Selanjutnya"
+    }
+  },
+  "reviews": {
+    "title": "Telaah Buku",
+    "subtitle": "Buku yang telah Anda ulas atau sedang Anda ulas",
+    "empty": {
+      "title": "Belum ada buku yang ditelaah",
+      "description": "Mulai mengulas buku untuk membantu pembaca lain"
+    }
+  },
+  "account": {
+    "title": "Informasi Akun",
+    "subtitle": "Kelola informasi pribadi Anda",
+    "updateSuccess": "Akun berhasil diperbarui",
+    "updateFail": "Gagal memperbarui akun. Silakan coba lagi.",
+    "fields": {
+      "accountType": "Jenis Akun",
+      "activationStatus": "Status Aktivasi",
+      "fullName": "Nama Lengkap",
+      "email": "Pos-el",
+      "phoneNumber": "Nomor Ponsel",
+      "gender": "Jenis Kelamin",
+      "male": "Laki-laki",
+      "female": "Perempuan",
+      "dateOfBirth": "Tanggal Lahir",
+      "province": "Provinsi Domisili",
+      "occupation": "Pekerjaan"
+    },
+    "placeholders": {
+      "fullName": "Masukkan nama lengkap",
+      "phoneNumber": "Masukkan nomor ponsel",
+      "dateOfBirth": "Pilih tanggal lahir",
+      "gender": "Pilih jenis kelamin...",
+      "province": "Pilih provinsi...",
+      "occupation": "Masukkan pekerjaan",
+      "otherOccupation": "Sebutkan pekerjaanmu disini"
+    },
+    "buttons": {
+      "save": "Simpan Perubahan",
+      "saving": "Menyimpan...",
+      "cancel": "Batal"
+    },
+    "status": {
+      "active": "Aktif",
+      "inactive": "Belum Diaktifkan",
+      "pending": "Menunggu"
+    },
+    "accountTypes": {
+      "reader": "Pembaca",
+      "translator": "Penerjemah",
+      "reviewer": "Pengulas",
+      "admin": "Administrator"
+    }
+  }
+}

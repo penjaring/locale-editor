@@ -1,0 +1,32 @@
+{
+  "app": {
+    "title": "Penjaring Admin",
+    "description": "Penjaring Admin Dashboard",
+    "copyright": "Hak Cipta © 2025"
+  },
+  "gov": "Kemendikdasmen",
+  "govUnit": "Badan Pengembangan dan Pembinaan Bahasa",
+  "govFull": "Kementrian Pendidikan Dasar dan Menengah",
+  "dashboard": {
+    "underConstruction": "Dalam Pengembangan",
+    "underDevelopment": "Halaman dashboard ini sedang dalam pengembangan"
+  },
+  "sidebar": {
+    "group": {
+      "application": "Aplikasi",
+      "settings": "Pengaturan"
+    },
+    "dashboard": "Dasbor",
+    "visitors": "Pengunjung",
+    "books": "Buku",
+    "audioVideo": "Buku Audio Video",
+    "documents": "Dokumen Kebahasaan",
+    "kosaisyarat": "Kosaisyarat",
+    "languages": "Bahasa",
+    "users": "Pengguna",
+    "roles": "Peran",
+    "settings": "Pengaturan",
+    "settingsGeneral": "Umum",
+    "settingsSystem": "Sistem"
+  }
+}

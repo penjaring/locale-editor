@@ -1,0 +1,100 @@
+{
+  "read": "Read",
+  "readNow": "Read Now",
+  "readBook": "Read Book {{title}} in $t(common:app.name)",
+  "share": "Share",
+  "seen": "Reads",
+  "like": "Likes",
+  "info": {
+    "author": "Author",
+    "description": "Description",
+    "translator": "Translator",
+    "illustrator": "Illustrator",
+    "license": "License",
+    "unknown": "Unknown"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search books...",
+    "searchBy": "Search by",
+    "fields": {
+      "title": "Title",
+      "author": "Author",
+      "publisher": "Publisher",
+      "translator": "Translator",
+      "description": "Description",
+      "tags": "Tags"
+    }
+  },
+  "filter": {
+    "title": "Filters",
+    "select": "Select {{filterBy}}",
+    "selected": "{{count}} $t({{filterBy}}, {\"count\": {{count}} }) selected",
+    "empty": "No $t({{filterBy}}, {\"count\": 2}) available",
+    "active": "Active Filters",
+    "clear": "Clear All",
+    "licensed": "Licensed Books",
+    "unlicensed": "Unlicensed Books",
+    "translatable": "Translatable Books"
+  },
+  "sortBy": {
+    "title": "Sort By",
+    "latest": "Latest",
+    "popular": "Most Popular",
+    "nameAz": "Title (A-Z)",
+    "totalPages": "Total Pages",
+    "publicationYear": "Publication Year",
+    "asc": "Ascending",
+    "desc": "Descending"
+  },
+  "readingLevel_one": "Level",
+  "readingLevel_other": "levels",
+  "bookType": "Book Type",
+  "bookLicense": "Book License",
+  "bookTranslation": "Book Translation",
+  "category_one": "Category",
+  "category_other": "Categories",
+  "tag_one": "Tag",
+  "tag_other": "Tags",
+  "languageType": "Language Type",
+  "languageType.local": "Local Language",
+  "languageType.foreign": "Foreign Language",
+  "language_one": "Language",
+  "language_other": "languages",
+  "empty": {
+    "title": "Book not found",
+    "description": "Try to change your search criteria or filter."
+  },
+  "error": {
+    "title": "Failed to load books",
+    "description": "An error occurred while loading data",
+    "refresh": "Refresh"
+  },
+  "cancel": "Cancel",
+  "translateThisBook": "Translate This Book",
+  "selectLanguage": "Select Language",
+  "searchLanguage": "Search Language",
+  "noLanguage": "No Language",
+  "translate": "Translate",
+  "availableTranslations": "Available Translations",
+  "selectTranslation": "Select Translation",
+  "searchTranslation": "Search Translation",
+  "noTranslation": "No Translation",
+  "translateSuccess": "Translation Started",
+  "translateFailed": "Failed to start translation",
+  "updateTranslationSuccess": "Translation Updated Successfully",
+  "updateTranslationFailed": "Failed to update translation",
+  "publishTranslationSuccess": "Translation Published",
+  "publishTranslationFailed": "Failed to publish translation",
+  "readingProgress": {
+    "of": "of",
+    "pages": "pages",
+    "continueReading": "Read"
+  },
+  "likeSuccess": "Book liked!",
+  "doYouLikeBook": "Do you like the story in this book?",
+  "neutral": "It's okay",
+  "love": "Love it!",
+  "emojisAttribution1": "Emojis designed by",
+  "emojisAttribution2": "- the open-source emoji and icon project. License:"
+}

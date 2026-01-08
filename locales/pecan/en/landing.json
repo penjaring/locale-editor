@@ -1,0 +1,98 @@
+{
+  "toggle": "Toggle Menu",
+  "follow": "Follow Us",
+  "hero": {
+    "title": "Magical Book for Amazing Kids",
+    "titleLine1": "Magical Book",
+    "titleLine2": "for Amazing Kids",
+    "description": "Discover fascinating stories and embark on amazing adventures. Suitable for all reading levels, from beginners to advanced readers.",
+    "start": "Start Read",
+    "search": "Search Books"
+  },
+  "search": {
+    "title": "Search",
+    "description": "Search Books",
+    "placeholder": "Search for Books..."
+  },
+  "navbar": {
+    "dashboard": "My Collections",
+    "home": "Home",
+    "videos": "Audio/Video Books",
+    "profile": "Profile",
+    "login": "Login",
+    "manageAccount": "Manage Account",
+    "logout": "Logout"
+  },
+  "books": {
+    "title": "Books",
+    "classification": "Reader Level",
+    "category": "Categories",
+    "more": "More",
+    "popular": {
+      "title": "Popular Books",
+      "tagline": "Most Popular",
+      "description": "Loved by many kids!"
+    },
+    "limited": {
+      "title": "Limited Edition Books",
+      "tagline": "Limited Edition",
+      "description": "Read while it's still available!"
+    },
+    "latest": {
+      "title": "Latest Books",
+      "tagline": "Latest",
+      "description": "New stories just for you!"
+    },
+    "licensedBooks": "Licensed Books",
+    "unlicensedBooks": "Unlicensed Books",
+    "foreignBooks": "Foreign Language Books",
+    "localBooks": "Local Language Books"
+  },
+  "categories": {
+    "error": {
+      "title": "Failed to Load Categories",
+      "description": "Unable to fetch book categories at this time.",
+      "refresh": "Refresh"
+    },
+    "empty": {
+      "title": "No Categories Available",
+      "description": "There are currently no book categories to display."
+    }
+  },
+  "footer": {
+    "information": "Information",
+    "about": "About Us",
+    "partners": "Our Partners",
+    "faq": "Frequently Asked Questions (FAQ)",
+    "contact": "Contact Us"
+  },
+  "statistics": {
+    "title": "Statistics Visitor",
+    "reader": "Readers",
+    "language": "Languages",
+    "today": "Today",
+    "month": "This month",
+    "year": "This year",
+    "overall": "Overall"
+  },
+  "error": {
+    "title": "Whops! Something went wrong",
+    "badge": "An Error Occurred",
+    "description": "It seems that the application is experiencing technical difficulties",
+    "detail": "Error Detail",
+    "type": "Type",
+    "homePage": "Back to Home",
+    "previousPage": "Previous Page",
+    "refresh": "Refresh",
+    "tryagain": "Coba Lagi",
+    "page404": {
+      "title": "Page Not Found",
+      "description": "It appears that the page you are looking for has been moved or does not exist"
+    }
+  },
+  "warningDevTools": {
+    "title": "Developer Tools Detected",
+    "description": "We've detected that developer tools or console is open. Please close it to continue using this page.",
+    "info": "This security measure helps protect the content on this page. If you believe this is an error, please contact support."
+  }
+}

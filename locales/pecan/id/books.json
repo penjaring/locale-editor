@@ -1,0 +1,96 @@
+{
+  "read": "Baca",
+  "readNow": "Baca Sekarang",
+  "readBook": "Baca Buku {{title}} di $t(common:app.name)",
+  "share": "Bagikan",
+  "seen": "Dibaca",
+  "like": "Suka",
+  "info": {
+    "author": "Penulis",
+    "description": "Deskripsi",
+    "translator": "Penerjemah",
+    "illustrator": "Ilustrator",
+    "license": "Lisensi",
+    "unknown": "Tidak Diketahui"
+  },
+  "search": {
+    "title": "Cari",
+    "placeholder": "Cari buku...",
+    "searchBy": "Cari berdasarkan",
+    "fields": {
+      "title": "Judul",
+      "author": "Penulis",
+      "publisher": "Penerbit",
+      "translator": "Penerjemah",
+      "description": "Deskripsi",
+      "tags": "Tagar"
+    }
+  },
+  "filter": {
+    "title": "Filter",
+    "select": "Pilih {{filterBy}}",
+    "selected": "{{count}} $t({{filterBy}}, {\"count\": {{count}} }) terpilih",
+    "empty": "Tidak ada $t({{filterBy}}, \"count\": 1) yang tersedia",
+    "active": "Filter aktif",
+    "clear": "Bersihkan",
+    "licensed": "Buku Edisi Terbatas",
+    "unlicensed": "Buku Edisi Umum",
+    "translatable": "Buku yang Dapat Diterjemahkan"
+  },
+  "sortBy": {
+    "title": "Urutkan",
+    "latest": "Terbaru",
+    "popular": "Terpopuler",
+    "nameAz": "Judul (A-Z)",
+    "totalPages": "Jumlah Halaman",
+    "publicationYear": "Tahun Terbit",
+    "asc": "Menaik",
+    "desc": "Menurun"
+  },
+  "readingLevel": "Klasifikasi",
+  "bookType": "Jenis Buku",
+  "bookLicense": "Lisensi Buku",
+  "bookTranslation": "Terjemahan Buku",
+  "category": "Kategori",
+  "tag": "Tagar",
+  "languageType": "Jenis Bahasa",
+  "languageType.local": "Dwibahasa",
+  "languageType.foreign": "Bahasa Asing",
+  "language": "Bahasa",
+  "empty": {
+    "title": "Tidak ada buku yang ditemukan",
+    "description": "Coba ubah kriteria pencarian atau filter Anda."
+  },
+  "error": {
+    "title": "Gagal memuat buku",
+    "description": "Terjadi kesalahan saat memuat data.",
+    "refresh": "Perbaharui"
+  },
+  "cancel": "Batal",
+  "translateThisBook": "Terjemahkan Buku Ini",
+  "selectLanguage": "Pilih Bahasa",
+  "searchLanguage": "Cari Bahasa",
+  "noLanguage": "Tidak Ada Bahasa",
+  "translate": "Terjemahkan",
+  "availableTranslations": "Terjemahan yang Tersedia",
+  "selectTranslation": "Pilih Terjemahan",
+  "searchTranslation": "Cari Terjemahan",
+  "noTranslation": "Tidak Ada Terjemahan",
+  "translateSuccess": "Terjemahan Dimulai",
+  "translateFailed": "Gagal memulai terjemahan",
+  "updateTranslationSuccess": "Terjemahan Berhasil Diperbarui",
+  "updateTranslationFailed": "Gagal memperbarui terjemahan",
+  "publishTranslationSuccess": "Terjemahan Diterbitkan",
+  "publishTranslationFailed": "Gagal menerbitkan terjemahan",
+  "readingProgress": {
+    "of": "dari",
+    "pages": "halaman",
+    "continueReading": "Baca"
+  },
+  "likeSuccess": "Buku Disukai!",
+  "doYouLikeBook": "Apakah kamu menyukai cerita dalam buku ini?",
+  "neutral": "Biasa Saja",
+  "love": "Sangat Suka!",
+  "emojisAttribution1": "Emoji dirancang oleh",
+  "emojisAttribution2": "- proyek emoji dan ikon sumber terbuka. Lisensi:"
+}

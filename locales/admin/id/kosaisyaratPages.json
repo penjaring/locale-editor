@@ -1,0 +1,124 @@
+{
+  "pageTitle": "Kosakata Isyarat",
+  "pageDescription": "Kelola kosakata bahasa isyarat di sistem.",
+  "searchPlaceholder": "Cari kosaisyarat...",
+  "addKosaisyarat": "Tambah Kosaisyarat",
+  "title": "Judul",
+  "description": "Deskripsi",
+  "video": "Video",
+  "videoUrl": "URL Video",
+  "videoUrlOption": "Video URL",
+  "videoUploadOption": "Upload Video",
+  "videoFile": "File Video",
+  "videoFileTypeError": "File harus berupa format MP4",
+  "videoFileSizeError": "Ukuran file video harus kurang dari 100MB",
+  "videoUrlRequired": "URL Video wajib diisi",
+  "videoFileRequired": "File Video wajib diisi",
+  "selectedFile": "Dipilih",
+  "selectFile": "Pilih file",
+  "changeFile": "Ubah file",
+  "videoFileHint": "Ukuran maksimal: 100MB. Format yang didukung: MP4 saja.",
+  "videoThumbnail": "Thumbnail Video",
+  "views": "Dilihat",
+  "downloads": "Diunduh",
+  "createdAt": "Dibuat",
+  "edit": "Ubah",
+  "delete": "Hapus",
+  "view": "Lihat",
+  "cancel": "Batal",
+  "save": "Simpan",
+  "create": "Buat",
+  "update": "Perbarui",
+  "noKosaisyarat": "Tidak ada kosaisyarat ditemukan",
+  "errorTitle": "Gagal memuat kosaisyarat",
+  "retry": "Coba Lagi",
+  "createKosaisyarat": "Buat Kosaisyarat",
+  "createKosaisyaratDescription": "Tambahkan kosakata bahasa isyarat baru.",
+  "createSuccess": "Kosaisyarat berhasil dibuat",
+  "createError": "Gagal membuat kosaisyarat",
+  "editKosaisyarat": "Ubah Kosaisyarat",
+  "editKosaisyaratDescription": "Perbarui informasi kosakata bahasa isyarat.",
+  "updateSuccess": "Kosaisyarat berhasil diperbarui",
+  "updateError": "Gagal memperbarui kosaisyarat",
+  "deleteTitle": "Hapus Kosaisyarat",
+  "deleteDescription": "Apakah Anda yakin ingin menghapus \"{{title}}\"? Tindakan ini tidak dapat dibatalkan.",
+  "typeToConfirm": "Ketik \"{{title}}\" untuk konfirmasi",
+  "deleteSuccess": "Kosaisyarat berhasil dihapus",
+  "deleteError": "Gagal menghapus kosaisyarat",
+  "titlePlaceholder": "Masukkan judul",
+  "descriptionPlaceholder": "Masukkan deskripsi (opsional)",
+  "videoUrlPlaceholder": "https://example.com/video.mp4",
+  "videoThumbnailPlaceholder": "Otomatis dihasilkan atau masukkan URL manual",
+  "generatingThumbnail": "Membuat thumbnail...",
+  "table": {
+    "title": "Judul",
+    "description": "Deskripsi",
+    "uploadedBy": "Diunggah Oleh",
+    "views": "Dilihat",
+    "downloads": "Diunduh",
+    "createdAt": "Dibuat",
+    "actions": "Aksi",
+    "noDescription": "Tidak ada deskripsi",
+    "unknownUser": "Tidak diketahui",
+    "view": "Lihat",
+    "download": "Unduh",
+    "edit": "Ubah",
+    "delete": "Hapus"
+  },
+  "empty": {
+    "title": "Tidak ada kosaisyarat",
+    "description": "Belum ada kosakata bahasa isyarat yang ditambahkan."
+  },
+  "error": {
+    "title": "Gagal memuat kosaisyarat",
+    "retry": "Coba Lagi"
+  },
+  "pagination": {
+    "showing": "Menampilkan {{start}}-{{end}} dari {{total}}"
+  },
+  "currentVideo": "Video saat ini (unggah baru untuk mengganti)",
+  "loading": "Memuat...",
+  "dialog": {
+    "videoNotFound": "Video tidak ditemukan",
+    "videoNotFoundDescription": "Video tidak tersedia atau tidak dapat dimuat.",
+    "noVideoUrl": "Tidak ada URL video",
+    "openInNewTab": "Buka di Tab Baru",
+    "close": "Tutup"
+  },
+  "tabs": {
+    "kosaisyarat": "Kosaisyarat",
+    "deleted": "Dihapus"
+  },
+  "deleted": {
+    "unauthorized": "Anda tidak memiliki izin untuk melihat kosaisyarat yang dihapus.",
+    "empty": {
+      "title": "Tidak ada kosaisyarat yang dihapus",
+      "description": "Belum ada kosaisyarat yang dihapus."
+    },
+    "error": {
+      "title": "Gagal memuat kosaisyarat yang dihapus",
+      "retry": "Coba Lagi"
+    },
+    "table": {
+      "deletedAt": "Dihapus Pada"
+    },
+    "actions": {
+      "restore": "Pulihkan",
+      "hardDelete": "Hapus Permanen"
+    },
+    "restoreTitle": "Pulihkan Kosaisyarat",
+    "restoreDescription": "Apakah Anda yakin ingin memulihkan kosaisyarat ini? Kosaisyarat akan tersedia kembali.",
+    "restoreConfirm": "Ketik judul kosaisyarat untuk konfirmasi",
+    "restoreButton": "Pulihkan",
+    "restoreSuccess": "Kosaisyarat berhasil dipulihkan",
+    "restoreError": "Gagal memulihkan kosaisyarat",
+    "hardDeleteTitle": "Hapus Permanen Kosaisyarat",
+    "hardDeleteDescription": "Tindakan ini tidak dapat dibatalkan. Semua file dan data terkait (file video dan thumbnail) akan dihapus secara permanen dari database dan penyimpanan.",
+    "hardDeleteConfirm": "Ketik judul kosaisyarat untuk konfirmasi",
+    "hardDeleteSuccess": "Kosaisyarat berhasil dihapus secara permanen",
+    "hardDeleteError": "Gagal menghapus kosaisyarat secara permanen",
+    "permanentDeleteWarning": "Tindakan ini tidak dapat dibatalkan. Semua file dan data terkait (file video dan thumbnail) akan dihapus secara permanen dari database dan penyimpanan.",
+    "cancel": "Batal"
+  }
+}
+
