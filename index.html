@@ -295,22 +295,149 @@
             margin-bottom: 10px;
         }
 
+        .instructions ul {
+            padding-left: 20px;
+        }
+
         .instructions p {
             color: #856404;
             line-height: 1.6;
+        }
+
+        .mixed-input-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            background: white;
+            min-height: 38px;
+            transition: border-color 0.3s;
+        }
+
+        .mixed-input-container:focus-within {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+
+        .mixed-input-container input {
+            border: none;
+            padding: 2px 4px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            min-width: 20px;
+            max-width: 100%;
+            background: transparent;
+        }
+
+        .placeholder-token {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #90caf9;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .variable-token {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            background: #f3e5f5;
+            color: #7b1fa2;
+            border: 1px solid #ce93d8;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .html-token {
+            display: none;
+            align-items: center;
+            padding: 2px 8px;
+            background: #fff3e0;
+            color: #e65100;
+            border: 1px solid #ffb74d;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .language-selector label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .language-toggle {
+            display: flex;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .language-toggle button {
+            padding: 8px 20px;
+            border: none;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .language-toggle button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .language-toggle button.active {
+            background: white;
+            color: #667eea;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <header>
+            <div class="language-selector">
+                <label>Bahasa:</label>
+                <div class="language-toggle">
+                    <button id="lang-id" class="active" onclick="switchLanguage('id')">Bahasa Indonesia</button>
+                    <button id="lang-en" onclick="switchLanguage('en')">Bahasa Inggris</button>
+                    <button id="lang-new" onclick="switchLanguage('new')">Bahasa Baru</button>
+                </div>
+            </div>
+        </header>
+
         <div class="instructions">
             <h3>📋 Petunjuk</h3>
-            <p>
-                Buat perubahan di kolom kanan, lalu klik tombol unduh untuk menyimpan perubahan Anda.
-            </p>
-            <p>
-                Teks yang berada di dalam kurung kurawal (contohnya <strong>{{title}}</strong>) atau yang diawali dengan <strong>$t</strong> (contohnya <strong>$t({{filterBy}}, \"count\": 1)</strong>) tidak perlu dirubah.
-            </p>
+            <ul>
+                <li><p>Sunting di <strong>kolom kanan</strong>, lalu klik tombol <strong>unduh</strong> untuk menyimpan perubahan Anda.</p></li>
+                <li><p>Teks yang berada di dalam kurung kurawal (contohnya <strong>{{title}}</strong>) atau yang diawali dengan <strong>$t</strong> (contohnya <strong>$t({{filterBy}}, \"count\": 1)</strong>) tidak perlu disunting.</p></li>
+                <li><p><strong>Pilih bahasa</strong> (Bahasa Indonesia/Bahasa Inggris) di bagian atas untuk menyunting bahasa yang berbeda, atau pilih bahasa baru untuk menambahkan bahasa baru</p></li>
+            </ul>
         </div>
 
         <div class="tabs">
@@ -322,21 +449,21 @@
         <div id="pecan" class="tab-content active">
             <div class="loading">
                 <div class="spinner"></div>
-                <p>Memuat locale Pecan...</p>
+                <p>Memuat...</p>
             </div>
         </div>
 
         <div id="admin" class="tab-content">
             <div class="loading">
                 <div class="spinner"></div>
-                <p>Memuat locale Admin...</p>
+                <p>Memuat...</p>
             </div>
         </div>
 
         <div id="web" class="tab-content">
             <div class="loading">
                 <div class="spinner"></div>
-                <p>Memuat locale Web...</p>
+                <p>Memuat...</p>
             </div>
         </div>
     </div>
@@ -352,6 +479,25 @@
 
         // Store loaded data
         const localeData = {};
+        let currentLanguage = 'id'; // Default to Indonesian
+
+        // Switch language function
+        function switchLanguage(lang) {
+            if (lang === 'new') currentLanguage = 'en';
+            else currentLanguage = lang;
+            
+            // Update active state on buttons
+            document.querySelectorAll('.language-toggle button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`lang-${lang}`).classList.add('active');
+            
+            // Clear cached data and reload current tab
+            const activeTab = document.querySelector('.tab.active');
+            const tabId = activeTab.getAttribute('data-tab');
+            localeData[tabId] = null;
+            loadLocaleFolder(tabId);
+        }
 
         // Initialize tabs
         document.querySelectorAll('.tab').forEach(tab => {
@@ -382,7 +528,7 @@
             try {
                 // Load all JSON files for this folder
                 for (const file of files) {
-                    const response = await fetch(`locales/${folder}/id/${file}.json`);
+                    const response = await fetch(`locales/${folder}/${currentLanguage}/${file}.json`);
                     if (response.ok) {
                         localeData[folder][file] = await response.json();
                     } else {
@@ -441,6 +587,82 @@
             container.innerHTML = html;
         }
 
+        // Parse text into segments (editable text and non-editable tokens)
+        function parseTextSegments(text) {
+            const segments = [];
+            let currentPos = 0;
+            
+            // Regex to match {{placeholder}}, $t(...), or HTML tags
+            const tokenRegex = /(\{\{[^}]+\}\}|\$t\([^)]*\)|<[^>]+>)/g;
+            let match;
+            
+            while ((match = tokenRegex.exec(text)) !== null) {
+                // Add text before the token
+                if (match.index > currentPos) {
+                    segments.push({
+                        type: 'text',
+                        value: text.substring(currentPos, match.index)
+                    });
+                }
+                
+                // Add the token
+                const tokenValue = match[0];
+                let tokenType;
+                if (tokenValue.startsWith('{{')) {
+                    tokenType = 'placeholder';
+                } else if (tokenValue.startsWith('$t')) {
+                    tokenType = 'variable';
+                } else if (tokenValue.startsWith('<')) {
+                    tokenType = 'html';
+                }
+                
+                segments.push({
+                    type: tokenType,
+                    value: tokenValue
+                });
+                
+                currentPos = match.index + tokenValue.length;
+            }
+            
+            // Add remaining text
+            if (currentPos < text.length) {
+                segments.push({
+                    type: 'text',
+                    value: text.substring(currentPos)
+                });
+            }
+            
+            return segments;
+        }
+
+        // Render mixed input with editable text and non-editable tokens
+        function renderMixedInput(fullKey, valueStr) {
+            const segments = parseTextSegments(valueStr);
+            
+            let html = '<div class="mixed-input-container" data-key="' + escapeAttribute(fullKey) + '">';
+            
+            segments.forEach((segment, index) => {
+                if (segment.type === 'text') {
+                    const width = Math.max(segment.value.length + 2, 5);
+                    html += `<input type="text" 
+                                    class="text-segment" 
+                                    data-segment-index="${index}"
+                                    value="${escapeAttribute(segment.value)}"
+                                    style="width: ${width}ch;"
+                                    oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'">`;
+                } else if (segment.type === 'placeholder') {
+                    html += `<span class="placeholder-token" data-segment-index="${index}">${escapeHtml(segment.value)}</span>`;
+                } else if (segment.type === 'variable') {
+                    html += `<span class="variable-token" data-segment-index="${index}">${escapeHtml(segment.value)}</span>`;
+                } else if (segment.type === 'html') {
+                    html += `<span class="html-token" data-segment-index="${index}">${escapeHtml(segment.value)}</span>`;
+                }
+            });
+            
+            html += '</div>';
+            return html;
+        }
+
         // Render key-value pairs recursively
         function renderKeyPairs(obj, prefix) {
             let html = '';
@@ -470,11 +692,7 @@
                                 </div>
                                 <div class="input-wrapper">
                                     <label class="input-label">Edit</label>
-                                    <input type="text" 
-                                           class="input-field" 
-                                           data-key="${escapeAttribute(fullKey)}"
-                                           value="${escapeAttribute(valueStr)}"
-                                           onchange="updateValue('${escapeAttribute(fullKey)}', this.value)">
+                                    ${renderMixedInput(fullKey, valueStr)}
                                 </div>
                             </div>
                         </div>
@@ -496,19 +714,38 @@
             // This is handled inline, values are read when downloading
         }
 
+        // Reconstruct text from mixed input segments
+        function reconstructTextFromSegments(container) {
+            const segments = [];
+            const children = container.children;
+            
+            for (let i = 0; i < children.length; i++) {
+                const child = children[i];
+                if (child.classList.contains('text-segment')) {
+                    segments.push(child.value);
+                } else if (child.classList.contains('placeholder-token') || 
+                           child.classList.contains('variable-token') ||
+                           child.classList.contains('html-token')) {
+                    segments.push(child.textContent);
+                }
+            }
+            
+            return segments.join('');
+        }
+
         // Download edited JSON file
         function downloadFile(event, folder, fileName) {
             event.stopPropagation();
             
             const section = event.target.closest('.file-section');
-            const inputs = section.querySelectorAll('.input-field:not(.readonly)');
+            const mixedInputs = section.querySelectorAll('.mixed-input-container');
             
             // Build the updated JSON object
             const updatedData = {};
             
-            inputs.forEach(input => {
-                const key = input.getAttribute('data-key');
-                const value = input.value;
+            mixedInputs.forEach(container => {
+                const key = container.getAttribute('data-key');
+                const value = reconstructTextFromSegments(container);
                 setNestedValue(updatedData, key, value);
             });
             
