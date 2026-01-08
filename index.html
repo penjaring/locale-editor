@@ -644,12 +644,21 @@
             segments.forEach((segment, index) => {
                 if (segment.type === 'text') {
                     const width = Math.max(segment.value.length + 2, 5);
-                    html += `<input type="text" 
-                                    class="text-segment" 
-                                    data-segment-index="${index}"
-                                    value="${escapeAttribute(segment.value)}"
-                                    style="width: ${width}ch;"
-                                    oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'">`;
+                    if (segments.length === 1) {
+                        html += `<input type="text" 
+                                        class="text-segment" 
+                                        data-segment-index="${index}"
+                                        value="${escapeAttribute(segment.value)}"
+                                        style="width: ${width}ch; flex: 1;"
+                                        oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'">`;
+                    } else {
+                        html += `<input type="text" 
+                                        class="text-segment" 
+                                        data-segment-index="${index}"
+                                        value="${escapeAttribute(segment.value)}"
+                                        style="width: ${width}ch;"
+                                        oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'">`;
+                    }
                 } else if (segment.type === 'placeholder') {
                     html += `<span class="placeholder-token" data-segment-index="${index}">${escapeHtml(segment.value)}</span>`;
                 } else if (segment.type === 'variable') {
