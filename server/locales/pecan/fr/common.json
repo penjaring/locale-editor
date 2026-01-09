@@ -1,0 +1,72 @@
+{
+  "app": {
+    "name": "Penjaring",
+    "title": "Penerjemahan Daring",
+    "description": "Penerjemahan Daring",
+    "copyright": "Copyright"
+  },
+  "languages": {
+    "id": "Bahasa Indonesia",
+    "en": "English"
+  },
+  "switchLanguage": "Switch Language",
+  "gov": "Kemendikdasmen",
+  "govUnit": "Badan Pengembangan dan Pembinaan Bahasa",
+  "govUnitEn": "Language Development and Promotion Board",
+  "govFull": "Ministry of Primary and Secondary Education",
+  "govLine1": "BADAN PENGEMBANGAN",
+  "govLine2": "DAN PEMBINAAN BAHASA",
+  "govLine3": "KEMENDIKDASMEN",
+  "govAddress": "Kawasan Indonesia Peace and Security Center (IPSC) Jalan Anyar Km. 4, Sukahati, Citeureup, Kabupaten Bogor, Jawa Barat",
+  "govAddressLine1": "Kawasan Indonesia Peace and Security Center (IPSC)",
+  "govAddressLine2": "Jalan Anyar Km. 4, Sukahati, Citeureup, Kabupaten Bogor, Jawa Barat",
+  "govTelephone": "(021) 29099245",
+  "govEmail": "penerjemahan(at)kemendikdasmen.go.id",
+  "pagination": {
+    "next": "Next",
+    "previous": "Previous",
+    "more": "More pages",
+    "perPage": "Per page:",
+    "updating": "Updating...",
+    "result": "Showing {{startItem}} to {{endItem}} of {{totalItems}} results"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle1": "Background",
+    "paragraph1": "In 2020, the Expertise and Professional Services Group (KKLP) for Translation, now renamed the Translation Working Team, was formed by the Head of the Language Development and Guidance Agency (Badan Bahasa). The Translation ESPG was mandated by the Minister of Education and Culture for the period 2021-2025 to translate 5,000 high-quality children's storybooks that can build the character of Indonesian children. At that time, the pandemic was sweeping across the world and we were faced with new ways of communicating. Our first meeting began with a Zoom meeting with a small team from The Asia Foundation, who offered to collaborate in translating and publishing children's storybooks that highlight regional cultures and languages in Indonesia on their website: Let's Read. The journey did not stop there. We also looked for other sources to meet the Minister's request. We searched for a browser for digital libraries that provide books with a CC by 4.0 license. That was when we found digital libraries created by various institutions. Thanks to the excellent collaboration between the Language Agency, The Asia Foundation-Let's Read, Pratham Books-Storyweaver, and the Global Digital Library, KKLP Translation was able to meet and even exceed its 2021 translation target of translating 1,375 children's storybooks and publishing them online. Until 2025, the collaboration will continue with the same targets as in 2021. We hope that the increasing number of children's reading materials in Indonesia will also increase interest in reading and interest in preserving language and culture in all regions of Indonesia.",
+    "subtitle2": "About Penjaring",
+    "paragraph2": "Online Translation (Penjaring) is an online translation platform brand developed by the Language Agency, Ministry of Primary and Secondary Education. Penjaring was created as a form of facilitation by the Language Agency to make it easier for beneficiaries to access the Language Agency's translation products and utilize network-based translation features.",
+    "paragraph3": "The translation products on this platform are expected to be used by stakeholders and users as materials for linguistic diplomacy, community and family literacy, language learning enrichment in schools, parallel corpora, and research materials.",
+    "paragraph4": "The Penjaring platform has several features, namely (1) a book reading feature, (2) audio video books, and (3) a translate feature. All features on the Penjaring platform can be accessed once users have registered as users.",
+    "subtitle3": "Read Books",
+    "paragraph5": "The \"Read Books\" feature contains translated books that can be accessed by registered users. This feature is equipped with protection for licensed books produced in collaboration with well-known publishers, which cannot be downloaded or screenshotted.",
+    "subtitle4": "Audio Video Books",
+    "paragraph6": "The \"Audio Video Books\" feature presents sign language children's stories packaged with attractive animated illustrations, making them more friendly and inclusive for all children. These sign language children's stories are part of an effort to provide quality reading material that is enjoyable and easily accessible to all users.",
+    "subtitle5": "Translate",
+    "paragraph7": "The \"Translate\" feature allows users to translate books on the platform into various languages. Books can be translated using this feature either online or offline. This feature includes a Report button that allows readers to report errors in the translation, and translators can then edit their translations."
+  },
+  "partners": {
+    "title": "Our Partners",
+    "partner1": "1. Let's Read!",
+    "partner1Desc": "Let's Read!, initiated by the literacy program Books for Asia, has had 18 representative offices in Asia since 1954, one of which is in Indonesia. The literacy program received the US Library of Congress Literacy Awards in December 2017 for its innovation in promoting literacy. Let's Read! has become a digital library for children's storybooks, presented by the literacy community and The Asia Foundation, which strives to provide children in Asia with access to knowledge about their local languages and cultures. The books on Let's Read! are freely licensed and can be used and translated into various languages in Asia.",
+    "partner2": "2. Storyweaver",
+    "partner2Desc": "Storyweaver was created by Pratham Books in 2015. Storyweaver is a platform for creating and distributing books for children who are disadvantaged in terms of access to reading materials in their native language. Storyweaver has become a digital repository of multilingual children's storybooks with open licenses sourced from global publishers and Pratham Books itself. Open licenses allow these children's storybooks to be read offline, downloaded, printed, and even reused so that every child in the world can access them. Translation tools help children read books from around the world in their native languages. The books available on Storyweaver are mostly STEM (Science, Technology, Engineering, and Mathematics) based, supporting the Merdeka Belajar (Freedom to Learn) program launched by the Minister of Education, Culture, Research, and Technology.",
+    "partner3": "3. United Nations Educational, Scientific and Cultural Organization",
+    "partner3Desc": "The United Nations Educational, Scientific and Cultural Organization (UNESCO) is a specialized agency of the United Nations that focuses on education, science, and culture to promote peace and sustainable development throughout the world. In the field of education, UNESCO pays great attention to strengthening children's literacy as the main foundation for lifelong learning. Literacy is seen not only as the ability to read and write, but also includes the skills of understanding, critical thinking, and active participation in society. Through various global programs, UNESCO encourages member countries, including Indonesia, to develop policies, learning resources, and creative activities that support reading interest from an early age. Thus, UNESCO plays a very strategic role in creating an inclusive, equitable, and relevant children's literacy ecosystem for the challenges of the 21st century.",
+    "partner4": "4. Global Digital Library",
+    "partner4Desc": "The Global Digital Library (GDL) is a digital platform developed to provide open access to quality reading materials, especially for children around the world who have difficulty obtaining learning resources in their native or international languages. This initiative was born out of a collaboration between various international institutions to support sustainable development goals in education, particularly in improving children's literacy skills from an early age. The GDL collection includes thousands of storybooks, materials, and learning support tools that can be used online free of charge and are available in various languages to be inclusive and easily accessible to diverse user communities. In addition to enriching the reading experience, GDL also aims to bridge the global literacy gap through the use of digital technology."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions (FAQ)",
+    "q1": "What is Penjaring?",
+    "a1": "Penjaring (Online Translation) is the name of the online translation platform developed by the Agency for Language Development and Cultivation, Ministry of Education, Culture, Research, and Technology. Penjaring was created as a form of facilitation by the Language Agency to make it easier for stakeholders to access its translation products and use network-based translation features.",
+    "q2": "What features are available in Penjaring?",
+    "a2": "Penjaring has several application features, namely (1) the \"Read Books\" feature, (2) the \"Audio Video Books\" feature, and (3) the \"Translate\" feature. All features on the Penjaring application can be accessed after service users have registered as users.",
+    "q3": "Who can become a user on the Penjaring platform?",
+    "a3": "The translation products on this platform are expected to be utilized by stakeholders and service users as materials for language diplomacy, community and family literacy, language learning enrichment in schools, parallel corpus materials, and research materials.",
+    "q4": "When reading, what should you do if you find a translation that contains sensitive content?",
+    "a4": "You can report the translation by clicking the \"Report\" button located at the bottom of the translation you are reading, then fill in the title and report details. After that, click \"Submit\".",
+    "q5": "How to Create an Account on the Penjaring Website",
+    "q6": "How to Read Books on the Penjaring Website"
+  }
+}

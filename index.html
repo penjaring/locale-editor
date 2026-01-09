@@ -1,570 +1,745 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Locale Editor</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            opacity: 0.9;
-            font-size: 14px;
-        }
-
-        .tabs {
-            display: flex;
-            background: #f8f9fa;
-            border-bottom: 2px solid #dee2e6;
-            padding: 0 20px;
-        }
-
-        .tab {
-            padding: 15px 30px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-size: 16px;
-            font-weight: 600;
-            color: #6c757d;
-            transition: all 0.3s;
-            border-bottom: 3px solid transparent;
-            margin-bottom: -2px;
-        }
-
-        .tab:hover {
-            color: #495057;
-            background: #e9ecef;
-        }
-
-        .tab.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 30px;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .file-section {
-            margin-bottom: 30px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .file-header {
-            background: #f8f9fa;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-            position: relative;
-        }
-
-        .file-header:hover {
-            background: #e9ecef;
-        }
-
-        .file-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .chevron {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 6px solid #6c757d;
-            transition: transform 0.3s;
-        }
-
-        .file-content.expanded + .file-header .chevron,
-        .file-header:has(+ .file-content.expanded) .chevron {
-            transform: rotate(180deg);
-        }
-
-        .file-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .btn-download {
-            background: #28a745;
-            color: white;
-        }
-
-        .btn-download:hover {
-            background: #218838;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 5px rgba(40,167,69,0.3);
-        }
-
-        .btn-toggle {
-            background: #6c757d;
-            color: white;
-        }
-
-        .btn-toggle:hover {
-            background: #5a6268;
-        }
-
-        .file-content {
-            padding: 20px;
-            display: none;
-            max-height: 600px;
-            overflow-y: auto;
-        }
-
-        .file-content.expanded {
-            display: block;
-        }
-
-        .key-pair {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            border-left: 4px solid #667eea;
-        }
-
-        .key-name {
-            font-weight: 600;
-            color: #495057;
-            margin-bottom: 10px;
-            font-size: 14px;
-            font-family: 'Courier New', monospace;
-        }
-
-        .input-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .input-wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .input-label {
-            font-size: 12px;
-            color: #6c757d;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .input-field {
-            padding: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
-        }
-
-        .input-field.readonly {
-            background: #e9ecef;
-            cursor: not-allowed;
-        }
-
-        .nested-key {
-            margin-left: 20px;
-            padding-left: 15px;
-            border-left: 2px solid #dee2e6;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #6c757d;
-        }
-
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .upload-section {
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .upload-btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .upload-btn:hover {
-            background: #5568d3;
-        }
-
-        #fileInput {
-            display: none;
-        }
-
-        .instructions {
-            padding: 20px;
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .instructions h3 {
-            color: #856404;
-            margin-bottom: 10px;
-        }
-
-        .instructions ul {
-            padding-left: 20px;
-        }
-
-        .instructions p {
-            color: #856404;
-            line-height: 1.6;
-        }
-
-        .mixed-input-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            padding: 8px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            background: white;
-            min-height: 38px;
-            transition: border-color 0.3s;
-        }
-
-        .mixed-input-container:focus-within {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
-        }
-
-        .mixed-input-container input {
-            border: none;
-            padding: 2px 4px;
-            font-size: 14px;
-            font-family: inherit;
-            outline: none;
-            min-width: 20px;
-            max-width: 100%;
-            background: transparent;
-        }
-
-        .placeholder-token {
-            display: inline-flex;
-            align-items: center;
-            padding: 2px 8px;
-            background: #e3f2fd;
-            color: #1976d2;
-            border: 1px solid #90caf9;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            font-weight: 600;
-            white-space: nowrap;
-            user-select: none;
-        }
-
-        .variable-token {
-            display: inline-flex;
-            align-items: center;
-            padding: 2px 8px;
-            background: #f3e5f5;
-            color: #7b1fa2;
-            border: 1px solid #ce93d8;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            font-weight: 600;
-            white-space: nowrap;
-            user-select: none;
-        }
-
-        .html-token {
-            display: none;
-            align-items: center;
-            padding: 2px 8px;
-            background: #fff3e0;
-            color: #e65100;
-            border: 1px solid #ffb74d;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            font-weight: 600;
-            white-space: nowrap;
-            user-select: none;
-        }
-
-        .language-selector {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        .language-selector label {
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .language-toggle {
-            display: flex;
-            gap: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .language-toggle button {
-            padding: 8px 20px;
-            border: none;
-            background: transparent;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .language-toggle button:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .language-toggle button.active {
-            background: white;
-            color: #667eea;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <div class="language-selector">
-                <label>Bahasa:</label>
-                <div class="language-toggle">
-                    <button id="lang-id" class="active" onclick="switchLanguage('id')">Bahasa Indonesia</button>
-                    <button id="lang-en" onclick="switchLanguage('en')">Bahasa Inggris</button>
-                    <button id="lang-new" onclick="switchLanguage('new')">Bahasa Baru</button>
-                </div>
-            </div>
-        </header>
-
-        <div class="instructions">
-            <h3>📋 Petunjuk</h3>
-            <ul>
-                <li><p>Sunting di <strong>kolom kanan</strong>, lalu klik tombol <strong>unduh</strong> untuk menyimpan perubahan Anda.</p></li>
-                <li><p>Teks yang berada di dalam kurung kurawal (contohnya <strong>{{title}}</strong>) atau yang diawali dengan <strong>$t</strong> (contohnya <strong>$t({{filterBy}}, \"count\": 1)</strong>) tidak perlu disunting.</p></li>
-                <li><p><strong>Pilih bahasa</strong> (Bahasa Indonesia/Bahasa Inggris) di bagian atas untuk menyunting bahasa yang berbeda, atau pilih bahasa baru untuk menambahkan bahasa baru</p></li>
-            </ul>
-        </div>
-
-        <div class="tabs">
-            <button class="tab active" data-tab="pecan">Pecan</button>
-            <button class="tab" data-tab="admin">Admin</button>
-            <button class="tab" data-tab="web">Web</button>
-        </div>
-
-        <div id="pecan" class="tab-content active">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p>Memuat...</p>
-            </div>
-        </div>
-
-        <div id="admin" class="tab-content">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p>Memuat...</p>
-            </div>
-        </div>
-
-        <div id="web" class="tab-content">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p>Memuat...</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Define the structure of locale files for each folder
-        const localeStructure = {
-            pecan: ['auth', 'books', 'common', 'dashboard', 'landing', 'reading', 'translation', 'videos'],
-            admin: ['audioVideoBookPages', 'auth', 'bookPages', 'common', 'documentPages', 'insightsPages', 
-                    'kosaisyaratPages', 'languagePages', 'pages', 'rolePages', 'userPages'],
-            web: ['common', 'document', 'kosaisyarat', 'portal']
-        };
-
-        // Store loaded data
-        const localeData = {};
-        let currentLanguage = 'id'; // Default to Indonesian
-
-        // Switch language function
-        function switchLanguage(lang) {
-            if (lang === 'new') currentLanguage = 'en';
-            else currentLanguage = lang;
-            
-            // Update active state on buttons
-            document.querySelectorAll('.language-toggle button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.getElementById(`lang-${lang}`).classList.add('active');
-            
-            // Clear cached data and reload current tab
-            const activeTab = document.querySelector('.tab.active');
-            const tabId = activeTab.getAttribute('data-tab');
-            localeData[tabId] = null;
-            loadLocaleFolder(tabId);
-        }
-
-        // Initialize tabs
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked tab
-                tab.classList.add('active');
-                const tabId = tab.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-                
-                // Load data if not already loaded
-                if (!localeData[tabId]) {
-                    loadLocaleFolder(tabId);
-                }
-            });
-        });
-
-        // Load locale folder data
-        async function loadLocaleFolder(folder) {
-            const container = document.getElementById(folder);
-            const files = localeStructure[folder];
-            
-            localeData[folder] = {};
-            
-            try {
-                // Load all JSON files for this folder
-                for (const file of files) {
-                    const response = await fetch(`locales/${folder}/${currentLanguage}/${file}.json`);
-                    if (response.ok) {
-                        localeData[folder][file] = await response.json();
-                    } else {
-                        console.error(`Failed to load ${file}.json`);
-                        localeData[folder][file] = {};
-                    }
-                }
-                
-                // Render the UI
-                renderLocaleFolder(folder, container);
-            } catch (error) {
-                console.error(`Error loading ${folder}:`, error);
-                container.innerHTML = `
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>JSON Locale Editor</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background: #f5f5f5;
+				padding: 20px;
+			}
+
+			.container {
+				max-width: 1400px;
+				margin: 0 auto;
+				background: white;
+				border-radius: 8px;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+			}
+
+			header {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 30px;
+				text-align: center;
+			}
+
+			header h1 {
+				font-size: 28px;
+				margin-bottom: 10px;
+			}
+
+			header p {
+				opacity: 0.9;
+				font-size: 14px;
+			}
+
+			.tabs {
+				display: flex;
+				background: #f8f9fa;
+				border-bottom: 2px solid #dee2e6;
+				padding: 0 20px;
+			}
+
+			.tab {
+				padding: 15px 30px;
+				cursor: pointer;
+				border: none;
+				background: none;
+				font-size: 16px;
+				font-weight: 600;
+				color: #6c757d;
+				transition: all 0.3s;
+				border-bottom: 3px solid transparent;
+				margin-bottom: -2px;
+			}
+
+			.tab:hover {
+				color: #495057;
+				background: #e9ecef;
+			}
+
+			.tab.active {
+				color: #667eea;
+				border-bottom-color: #667eea;
+			}
+
+			.tab-content {
+				display: none;
+				padding: 30px;
+			}
+
+			.tab-content.active {
+				display: block;
+			}
+
+			.file-section {
+				margin-bottom: 30px;
+				border: 1px solid #e0e0e0;
+				border-radius: 8px;
+				overflow: hidden;
+			}
+
+			.file-header {
+				background: #f8f9fa;
+				padding: 15px 20px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				cursor: pointer;
+				user-select: none;
+				position: relative;
+			}
+
+			.file-header:hover {
+				background: #e9ecef;
+			}
+
+			.file-title {
+				font-size: 18px;
+				font-weight: 600;
+				color: #333;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+
+			.chevron {
+				display: inline-block;
+				width: 0;
+				height: 0;
+				border-left: 6px solid transparent;
+				border-right: 6px solid transparent;
+				border-top: 6px solid #6c757d;
+				transition: transform 0.3s;
+			}
+
+			.file-content.expanded + .file-header .chevron,
+			.file-header:has(+ .file-content.expanded) .chevron {
+				transform: rotate(180deg);
+			}
+
+			.file-actions {
+				display: flex;
+				gap: 10px;
+			}
+
+			.btn {
+				padding: 8px 16px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 14px;
+				font-weight: 500;
+				transition: all 0.3s;
+			}
+
+			.btn-download {
+				background: #28a745;
+				color: white;
+			}
+
+			.btn-download:hover {
+				background: #218838;
+				transform: translateY(-1px);
+				box-shadow: 0 2px 5px rgba(40, 167, 69, 0.3);
+			}
+
+			.btn-toggle {
+				background: #6c757d;
+				color: white;
+			}
+
+			.btn-toggle:hover {
+				background: #5a6268;
+			}
+
+			.file-content {
+				padding: 20px;
+				display: none;
+				max-height: 600px;
+				overflow-y: auto;
+			}
+
+			.file-content.expanded {
+				display: block;
+			}
+
+			.key-pair {
+				margin-bottom: 20px;
+				padding: 15px;
+				background: #f8f9fa;
+				border-radius: 6px;
+				border-left: 4px solid #667eea;
+			}
+
+			.key-name {
+				font-weight: 600;
+				color: #495057;
+				margin-bottom: 10px;
+				font-size: 14px;
+				font-family: 'Courier New', monospace;
+			}
+
+			.input-group {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 15px;
+			}
+
+			.input-wrapper {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.input-label {
+				font-size: 12px;
+				color: #6c757d;
+				margin-bottom: 5px;
+				font-weight: 500;
+			}
+
+			.input-field {
+				padding: 10px;
+				border: 1px solid #ced4da;
+				border-radius: 4px;
+				font-size: 14px;
+				font-family: inherit;
+				transition: border-color 0.3s;
+			}
+
+			.input-field:focus {
+				outline: none;
+				border-color: #667eea;
+				box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+			}
+
+			.input-field.readonly {
+				background: #e9ecef;
+				cursor: not-allowed;
+			}
+
+			.nested-key {
+				margin-left: 20px;
+				padding-left: 15px;
+				border-left: 2px solid #dee2e6;
+			}
+
+			.loading {
+				text-align: center;
+				padding: 40px;
+				color: #6c757d;
+			}
+
+			.spinner {
+				border: 3px solid #f3f3f3;
+				border-top: 3px solid #667eea;
+				border-radius: 50%;
+				width: 40px;
+				height: 40px;
+				animation: spin 1s linear infinite;
+				margin: 0 auto 20px;
+			}
+
+			@keyframes spin {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+
+			.upload-section {
+				padding: 20px;
+				background: #f8f9fa;
+				border-radius: 8px;
+				margin-bottom: 20px;
+				text-align: center;
+			}
+
+			.upload-btn {
+				background: #667eea;
+				color: white;
+				padding: 12px 24px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 16px;
+				font-weight: 600;
+			}
+
+			.upload-btn:hover {
+				background: #5568d3;
+			}
+
+			#fileInput {
+				display: none;
+			}
+
+			.instructions {
+				padding: 20px;
+				background: #fff3cd;
+				border: 1px solid #ffc107;
+				border-radius: 8px;
+				margin-bottom: 20px;
+			}
+
+			.instructions h3 {
+				color: #856404;
+				margin-bottom: 10px;
+			}
+
+			.instructions ul {
+				padding-left: 20px;
+			}
+
+			.instructions p {
+				color: #856404;
+				line-height: 1.6;
+			}
+
+			.mixed-input-container {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				padding: 8px;
+				border: 1px solid #ced4da;
+				border-radius: 4px;
+				background: white;
+				min-height: 38px;
+				transition: border-color 0.3s;
+			}
+
+			.mixed-input-container:focus-within {
+				border-color: #667eea;
+				box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+			}
+
+			.mixed-input-container input {
+				border: none;
+				padding: 2px 4px;
+				font-size: 14px;
+				font-family: inherit;
+				outline: none;
+				min-width: 20px;
+				max-width: 100%;
+				background: transparent;
+			}
+
+			.placeholder-token {
+				display: inline-flex;
+				align-items: center;
+				padding: 2px 8px;
+				background: #e3f2fd;
+				color: #1976d2;
+				border: 1px solid #90caf9;
+				border-radius: 3px;
+				font-family: 'Courier New', monospace;
+				font-size: 13px;
+				font-weight: 600;
+				white-space: nowrap;
+				user-select: none;
+			}
+
+			.variable-token {
+				display: inline-flex;
+				align-items: center;
+				padding: 2px 8px;
+				background: #f3e5f5;
+				color: #7b1fa2;
+				border: 1px solid #ce93d8;
+				border-radius: 3px;
+				font-family: 'Courier New', monospace;
+				font-size: 13px;
+				font-weight: 600;
+				white-space: nowrap;
+				user-select: none;
+			}
+
+			.html-token {
+				display: none;
+				align-items: center;
+				padding: 2px 8px;
+				background: #fff3e0;
+				color: #e65100;
+				border: 1px solid #ffb74d;
+				border-radius: 3px;
+				font-family: 'Courier New', monospace;
+				font-size: 13px;
+				font-weight: 600;
+				white-space: nowrap;
+				user-select: none;
+			}
+
+			.language-selector {
+				display: flex;
+				gap: 10px;
+				align-items: center;
+				margin-top: 15px;
+			}
+
+			.language-selector label {
+				font-size: 14px;
+				font-weight: 600;
+			}
+
+			.language-toggle {
+				display: flex;
+				gap: 0;
+				background: rgba(255, 255, 255, 0.2);
+				border-radius: 4px;
+				overflow: hidden;
+			}
+
+			.language-toggle button {
+				padding: 8px 20px;
+				border: none;
+				background: transparent;
+				color: white;
+				cursor: pointer;
+				font-size: 14px;
+				font-weight: 600;
+				transition: all 0.3s;
+			}
+
+			.language-toggle button:hover {
+				background: rgba(255, 255, 255, 0.1);
+			}
+
+			.language-toggle button.active {
+				background: white;
+				color: #667eea;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="language-selector">
+					<label>Bahasa:</label>
+					<div class="language-toggle">
+						<button
+							id="lang-id"
+							class="active"
+							onclick="switchLanguage('id')">
+							Bahasa Indonesia
+						</button>
+						<button
+							id="lang-en"
+							onclick="switchLanguage('en')">
+							English
+						</button>
+						<button
+							id="lang-new"
+							onclick="addNewLanguage()">
+							+ Bahasa Baru
+						</button>
+					</div>
+				</div>
+			</header>
+
+			<div class="instructions">
+				<h3>📋 Petunjuk</h3>
+				<ul>
+					<li>
+						<p>
+							Sunting di <strong>kolom kanan</strong>, lalu klik tombol
+							<strong>Simpan</strong> untuk menyimpan perubahan Anda ke server.
+						</p>
+					</li>
+					<li>
+						<p>
+							Teks yang berada di dalam kurung kurawal (contohnya
+							<strong>{{title}}</strong>) atau yang diawali dengan
+							<strong>$t</strong> (contohnya
+							<strong>$t({{filterBy}}, \"count\": 1)</strong>) tidak perlu
+							disunting.
+						</p>
+					</li>
+					<li>
+						<p>
+							<strong>Pilih bahasa</strong> (Bahasa Indonesia/English) di bagian
+							atas untuk menyunting bahasa yang berbeda, atau klik
+							<strong>+ Bahasa Baru</strong> untuk menambahkan bahasa baru
+						</p>
+					</li>
+				</ul>
+			</div>
+
+			<div class="tabs">
+				<button
+					class="tab active"
+					data-tab="pecan">
+					Pecan
+				</button>
+				<button
+					class="tab"
+					data-tab="admin">
+					Admin
+				</button>
+				<button
+					class="tab"
+					data-tab="web">
+					Web
+				</button>
+			</div>
+
+			<div
+				id="pecan"
+				class="tab-content active">
+				<div class="loading">
+					<div class="spinner"></div>
+					<p>Memuat...</p>
+				</div>
+			</div>
+
+			<div
+				id="admin"
+				class="tab-content">
+				<div class="loading">
+					<div class="spinner"></div>
+					<p>Memuat...</p>
+				</div>
+			</div>
+
+			<div
+				id="web"
+				class="tab-content">
+				<div class="loading">
+					<div class="spinner"></div>
+					<p>Memuat...</p>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// API Base URL
+			const API_BASE = 'http://localhost:3000/api';
+
+			// Define the structure of locale files for each folder
+			let localeStructure = {};
+
+			// Store loaded data
+			const localeData = {};
+			let currentLanguage = 'id'; // Default to Indonesian
+			let availableLanguages = ['en', 'id'];
+			let isAddingNewLanguage = false;
+
+			// Load structure from backend
+			async function loadStructure() {
+				try {
+					const response = await fetch(`${API_BASE}/structure`);
+					if (response.ok) {
+						localeStructure = await response.json();
+						await loadAvailableLanguages();
+					} else {
+						console.error('Failed to load structure');
+					}
+				} catch (error) {
+					console.error('Error loading structure:', error);
+				}
+			}
+
+			// Load available languages
+			async function loadAvailableLanguages() {
+				try {
+					const response = await fetch(`${API_BASE}/languages?folder=pecan`);
+					if (response.ok) {
+						const data = await response.json();
+						availableLanguages = data.languages;
+						updateLanguageButtons();
+					}
+				} catch (error) {
+					console.error('Error loading languages:', error);
+				}
+			}
+
+			// Update language buttons based on available languages
+			function updateLanguageButtons() {
+				const languageToggle = document.querySelector('.language-toggle');
+				let buttonsHtml = '';
+
+				availableLanguages.forEach((lang) => {
+					const isActive = lang === currentLanguage ? 'active' : '';
+					const displayName = getLanguageDisplayName(lang);
+					buttonsHtml += `<button id="lang-${lang}" class="${isActive}" onclick="switchLanguage('${lang}')">${displayName}</button>`;
+				});
+
+				// Add "New Language" button
+				buttonsHtml += `<button id="lang-new" onclick="addNewLanguage()">+ Bahasa Baru</button>`;
+
+				languageToggle.innerHTML = buttonsHtml;
+			}
+
+			// Get display name for language code
+			function getLanguageDisplayName(lang) {
+				const displayNames = {
+					en: 'English',
+					id: 'Bahasa Indonesia',
+					es: 'Español',
+					fr: 'Français',
+					de: 'Deutsch',
+					ja: '日本語',
+					zh: '中文',
+					ar: 'العربية',
+					pt: 'Português',
+					ru: 'Русский',
+				};
+				return displayNames[lang] || lang.toUpperCase();
+			}
+
+			// Add new language
+			async function addNewLanguage() {
+				const langCode = prompt(
+					'Masukkan kode bahasa ISO 639-1 (2 huruf, contoh: "es" untuk Spanyol):',
+				);
+				if (!langCode) return;
+
+				const sanitizedCode = langCode.toLowerCase().trim();
+				if (!/^[a-z]{2}$/.test(sanitizedCode)) {
+					alert('Kode bahasa tidak valid. Harap masukkan tepat 2 huruf kecil.');
+					return;
+				}
+
+				if (availableLanguages.includes(sanitizedCode)) {
+					alert(`Bahasa '${sanitizedCode}' sudah ada!`);
+					return;
+				}
+
+				const langName = prompt(
+					`Masukkan nama tampilan untuk '${sanitizedCode}' (contoh: "Español"):`,
+				);
+				if (!langName) return;
+
+				try {
+					const response = await fetch(`${API_BASE}/language`, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							langCode: sanitizedCode,
+							langName: langName,
+						}),
+					});
+
+					const result = await response.json();
+
+					if (response.ok) {
+						alert(`Bahasa '${sanitizedCode}' berhasil dibuat!`);
+						await loadAvailableLanguages();
+						switchLanguage(sanitizedCode);
+					} else {
+						alert(`Kesalahan: ${result.error || 'Gagal membuat bahasa'}`);
+					}
+				} catch (error) {
+					console.error('Error adding new language:', error);
+					alert('Gagal menambahkan bahasa baru. Silakan coba lagi.');
+				}
+			}
+
+			// Switch language function
+			function switchLanguage(lang) {
+				currentLanguage = lang;
+
+				// Update active state on buttons
+				document.querySelectorAll('.language-toggle button').forEach((btn) => {
+					btn.classList.remove('active');
+				});
+				const btn = document.getElementById(`lang-${lang}`);
+				if (btn) btn.classList.add('active');
+
+				// Clear cached data and reload current tab
+				const activeTab = document.querySelector('.tab.active');
+				const tabId = activeTab.getAttribute('data-tab');
+				localeData[tabId] = null;
+				loadLocaleFolder(tabId);
+			}
+
+			// Initialize tabs
+			document.querySelectorAll('.tab').forEach((tab) => {
+				tab.addEventListener('click', () => {
+					// Remove active class from all tabs
+					document
+						.querySelectorAll('.tab')
+						.forEach((t) => t.classList.remove('active'));
+					document
+						.querySelectorAll('.tab-content')
+						.forEach((c) => c.classList.remove('active'));
+
+					// Add active class to clicked tab
+					tab.classList.add('active');
+					const tabId = tab.getAttribute('data-tab');
+					document.getElementById(tabId).classList.add('active');
+
+					// Load data if not already loaded
+					if (!localeData[tabId]) {
+						loadLocaleFolder(tabId);
+					}
+				});
+			});
+
+			// Load locale folder data
+			async function loadLocaleFolder(folder) {
+				const container = document.getElementById(folder);
+				const files = localeStructure[folder];
+
+				if (!files) {
+					container.innerHTML =
+						'<div class="loading"><div class="spinner"></div><p>Memuat struktur...</p></div>';
+					return;
+				}
+
+				localeData[folder] = {};
+
+				try {
+					// Load all JSON files for this folder
+					for (const file of files) {
+						const response = await fetch(
+							`${API_BASE}/locale/?folder=${folder}&lang=${currentLanguage}&file=${file}`,
+						);
+						if (response.ok) {
+							localeData[folder][file] = await response.json();
+						} else {
+							console.error(`Failed to load ${file}.json`);
+							localeData[folder][file] = {};
+						}
+					}
+
+					// Render the UI
+					renderLocaleFolder(folder, container);
+				} catch (error) {
+					console.error(`Error loading ${folder}:`, error);
+					container.innerHTML = `
                     <div class="instructions">
                         <h3>⚠️ Tidak dapat memuat berkas</h3>
-                        <p>
-                            Berkas locale tidak dapat dimuat secara otomatis. File HTML ini perlu dijalankan 
-                            dari web server untuk memuat berkas JSON. Anda dapat:
-                        </p>
-                        <ul style="margin-top: 10px; margin-left: 20px;">
-                            <li>Jalankan web server lokal (misal, <code>python -m http.server</code>)</li>
-                            <li>Atau modifikasi script untuk menyematkan data JSON secara langsung</li>
-                        </ul>
+                        <p>Pastikan server backend berjalan di http://localhost:3000</p>
+                        <p>Jalankan: <code>cd server && bun run dev</code></p>
                     </div>
                 `;
-            }
-        }
+				}
+			}
 
-        // Render locale folder UI
-        function renderLocaleFolder(folder, container) {
-            const files = localeStructure[folder];
-            let html = '';
-            
-            files.forEach(fileName => {
-                const data = localeData[folder][fileName] || {};
-                html += `
+			// Render locale folder UI
+			function renderLocaleFolder(folder, container) {
+				const files = localeStructure[folder];
+				let html = '';
+
+				files.forEach((fileName) => {
+					const data = localeData[folder][fileName] || {};
+					html += `
                     <div class="file-section" data-folder="${folder}" data-file="${fileName}">
                         <div class="file-header" onclick="toggleSection(this)">
                             <div class="file-title">
@@ -572,8 +747,11 @@
                                 ${fileName}.json
                             </div>
                             <div class="file-actions">
+                                <button class="btn btn-download" onclick="saveFile(event, '${folder}', '${fileName}')">
+                                    💾 Simpan
+                                </button>
                                 <button class="btn btn-download" onclick="downloadFile(event, '${folder}', '${fileName}')">
-                                    💾 Unduh
+                                    📥 Unduh
                                 </button>
                             </div>
                         </div>
@@ -582,113 +760,131 @@
                         </div>
                     </div>
                 `;
-            });
-            
-            container.innerHTML = html;
-        }
+				});
 
-        // Parse text into segments (editable text and non-editable tokens)
-        function parseTextSegments(text) {
-            const segments = [];
-            let currentPos = 0;
-            
-            // Regex to match {{placeholder}}, $t(...), or HTML tags
-            const tokenRegex = /(\{\{[^}]+\}\}|\$t\([^)]*\)|<[^>]+>)/g;
-            let match;
-            
-            while ((match = tokenRegex.exec(text)) !== null) {
-                // Add text before the token
-                if (match.index > currentPos) {
-                    segments.push({
-                        type: 'text',
-                        value: text.substring(currentPos, match.index)
-                    });
-                }
-                
-                // Add the token
-                const tokenValue = match[0];
-                let tokenType;
-                if (tokenValue.startsWith('{{')) {
-                    tokenType = 'placeholder';
-                } else if (tokenValue.startsWith('$t')) {
-                    tokenType = 'variable';
-                } else if (tokenValue.startsWith('<')) {
-                    tokenType = 'html';
-                }
-                
-                segments.push({
-                    type: tokenType,
-                    value: tokenValue
-                });
-                
-                currentPos = match.index + tokenValue.length;
-            }
-            
-            // Add remaining text
-            if (currentPos < text.length) {
-                segments.push({
-                    type: 'text',
-                    value: text.substring(currentPos)
-                });
-            }
-            
-            return segments;
-        }
+				container.innerHTML = html;
+			}
 
-        // Render mixed input with editable text and non-editable tokens
-        function renderMixedInput(fullKey, valueStr) {
-            const segments = parseTextSegments(valueStr);
-            
-            let html = '<div class="mixed-input-container" data-key="' + escapeAttribute(fullKey) + '">';
-            
-            segments.forEach((segment, index) => {
-                if (segment.type === 'text') {
-                    const width = Math.max(segment.value.length + 2, 5);
-                    if (segments.length === 1) {
-                        html += `<input type="text" 
+			// Parse text into segments (editable text and non-editable tokens)
+			function parseTextSegments(text) {
+				const segments = [];
+				let currentPos = 0;
+
+				// Regex to match {{placeholder}}, $t(...), or HTML tags
+				const tokenRegex = /(\{\{[^}]+\}\}|\$t\([^)]*\)|<[^>]+>)/g;
+				let match;
+
+				while ((match = tokenRegex.exec(text)) !== null) {
+					// Add text before the token
+					if (match.index > currentPos) {
+						segments.push({
+							type: 'text',
+							value: text.substring(currentPos, match.index),
+						});
+					}
+
+					// Add the token
+					const tokenValue = match[0];
+					let tokenType;
+					if (tokenValue.startsWith('{{')) {
+						tokenType = 'placeholder';
+					} else if (tokenValue.startsWith('$t')) {
+						tokenType = 'variable';
+					} else if (tokenValue.startsWith('<')) {
+						tokenType = 'html';
+					}
+
+					segments.push({
+						type: tokenType,
+						value: tokenValue,
+					});
+
+					currentPos = match.index + tokenValue.length;
+				}
+
+				// Add remaining text
+				if (currentPos < text.length) {
+					segments.push({
+						type: 'text',
+						value: text.substring(currentPos),
+					});
+				}
+
+				return segments;
+			}
+
+			// Render mixed input with editable text and non-editable tokens
+			function renderMixedInput(fullKey, valueStr) {
+				const segments = parseTextSegments(valueStr);
+
+				let html =
+					'<div class="mixed-input-container" data-key="' +
+					escapeAttribute(fullKey) +
+					'">';
+
+				segments.forEach((segment, index) => {
+					if (segment.type === 'text') {
+						const width = Math.max(segment.value.length + 2, 5);
+						if (segments.length === 1) {
+							html += `<input type="text" 
                                         class="text-segment" 
                                         data-segment-index="${index}"
-                                        value="${escapeAttribute(segment.value)}"
+                                        value="${escapeAttribute(
+																					segment.value,
+																				)}"
                                         style="width: ${width}ch; flex: 1;"
                                         oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'">`;
-                    } else {
-                        html += `<input type="text" 
+						} else {
+							html += `<input type="text" 
                                         class="text-segment" 
                                         data-segment-index="${index}"
-                                        value="${escapeAttribute(segment.value)}"
+                                        value="${escapeAttribute(
+																					segment.value,
+																				)}"
                                         style="width: ${width}ch;"
                                         oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'">`;
-                    }
-                } else if (segment.type === 'placeholder') {
-                    html += `<span class="placeholder-token" data-segment-index="${index}">${escapeHtml(segment.value)}</span>`;
-                } else if (segment.type === 'variable') {
-                    html += `<span class="variable-token" data-segment-index="${index}">${escapeHtml(segment.value)}</span>`;
-                } else if (segment.type === 'html') {
-                    html += `<span class="html-token" data-segment-index="${index}">${escapeHtml(segment.value)}</span>`;
-                }
-            });
-            
-            html += '</div>';
-            return html;
-        }
+						}
+					} else if (segment.type === 'placeholder') {
+						html += `<span class="placeholder-token" data-segment-index="${index}">${escapeHtml(
+							segment.value,
+						)}</span>`;
+					} else if (segment.type === 'variable') {
+						html += `<span class="variable-token" data-segment-index="${index}">${escapeHtml(
+							segment.value,
+						)}</span>`;
+					} else if (segment.type === 'html') {
+						html += `<span class="html-token" data-segment-index="${index}">${escapeHtml(
+							segment.value,
+						)}</span>`;
+					}
+				});
 
-        // Render key-value pairs recursively
-        function renderKeyPairs(obj, prefix) {
-            let html = '';
-            
-            for (const [key, value] of Object.entries(obj)) {
-                const fullKey = prefix ? `${prefix}.${key}` : key;
-                
-                if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-                    html += `
+				html += '</div>';
+				return html;
+			}
+
+			// Render key-value pairs recursively
+			function renderKeyPairs(obj, prefix) {
+				let html = '';
+
+				for (const [key, value] of Object.entries(obj)) {
+					const fullKey = prefix ? `${prefix}.${key}` : key;
+
+					if (
+						typeof value === 'object' &&
+						value !== null &&
+						!Array.isArray(value)
+					) {
+						html += `
                         <div class="key-pair ${prefix ? 'nested-key' : ''}">
                             <div class="key-name">${fullKey}</div>
                             ${renderKeyPairs(value, fullKey)}
                         </div>
                     `;
-                } else {
-                    const valueStr = typeof value === 'string' ? value : JSON.stringify(value);
-                    html += `
+					} else {
+						const valueStr =
+							typeof value === 'string' ? value : JSON.stringify(value);
+						html += `
                         <div class="key-pair ${prefix ? 'nested-key' : ''}">
                             <div class="key-name">${escapeHtml(fullKey)}</div>
                             <div class="input-group">
@@ -706,106 +902,156 @@
                             </div>
                         </div>
                     `;
-                }
-            }
-            
-            return html;
-        }
+					}
+				}
 
-        // Toggle section expand/collapse
-        function toggleSection(header) {
-            const content = header.nextElementSibling;
-            content.classList.toggle('expanded');
-        }
+				return html;
+			}
 
-        // Update value in the data structure
-        function updateValue(key, value) {
-            // This is handled inline, values are read when downloading
-        }
+			// Toggle section expand/collapse
+			function toggleSection(header) {
+				const content = header.nextElementSibling;
+				content.classList.toggle('expanded');
+			}
 
-        // Reconstruct text from mixed input segments
-        function reconstructTextFromSegments(container) {
-            const segments = [];
-            const children = container.children;
-            
-            for (let i = 0; i < children.length; i++) {
-                const child = children[i];
-                if (child.classList.contains('text-segment')) {
-                    segments.push(child.value);
-                } else if (child.classList.contains('placeholder-token') || 
-                           child.classList.contains('variable-token') ||
-                           child.classList.contains('html-token')) {
-                    segments.push(child.textContent);
-                }
-            }
-            
-            return segments.join('');
-        }
+			// Update value in the data structure
+			function updateValue(key, value) {
+				// This is handled inline, values are read when downloading
+			}
 
-        // Download edited JSON file
-        function downloadFile(event, folder, fileName) {
-            event.stopPropagation();
-            
-            const section = event.target.closest('.file-section');
-            const mixedInputs = section.querySelectorAll('.mixed-input-container');
-            
-            // Build the updated JSON object
-            const updatedData = {};
-            
-            mixedInputs.forEach(container => {
-                const key = container.getAttribute('data-key');
-                const value = reconstructTextFromSegments(container);
-                setNestedValue(updatedData, key, value);
-            });
-            
-            // Create and download the file
-            const jsonStr = JSON.stringify(updatedData, null, 2);
-            const blob = new Blob([jsonStr], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${fileName}.json`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
+			// Reconstruct text from mixed input segments
+			function reconstructTextFromSegments(container) {
+				const segments = [];
+				const children = container.children;
 
-        // Set nested value in object using dot notation
-        function setNestedValue(obj, path, value) {
-            const keys = path.split('.');
-            let current = obj;
-            
-            for (let i = 0; i < keys.length - 1; i++) {
-                const key = keys[i];
-                if (!current[key]) {
-                    current[key] = {};
-                }
-                current = current[key];
-            }
-            
-            current[keys[keys.length - 1]] = value;
-        }
+				for (let i = 0; i < children.length; i++) {
+					const child = children[i];
+					if (child.classList.contains('text-segment')) {
+						segments.push(child.value);
+					} else if (
+						child.classList.contains('placeholder-token') ||
+						child.classList.contains('variable-token') ||
+						child.classList.contains('html-token')
+					) {
+						segments.push(child.textContent);
+					}
+				}
 
-        // Escape HTML to prevent XSS
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+				return segments.join('');
+			}
 
-        // Escape attribute values
-        function escapeAttribute(text) {
-            return text
-                .replace(/&/g, '&amp;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
-        }
+			// Save edited JSON file to backend
+			async function saveFile(event, folder, fileName) {
+				event.stopPropagation();
 
-        // Load initial data
-        loadLocaleFolder('pecan');
-    </script>
-</body>
+				const section = event.target.closest('.file-section');
+				const mixedInputs = section.querySelectorAll('.mixed-input-container');
+
+				// Build the updated JSON object
+				const updatedData = {};
+
+				mixedInputs.forEach((container) => {
+					const key = container.getAttribute('data-key');
+					const value = reconstructTextFromSegments(container);
+					setNestedValue(updatedData, key, value);
+				});
+
+				try {
+					const response = await fetch(`${API_BASE}/locale`, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							folder: folder,
+							lang: currentLanguage,
+							file: fileName,
+							data: updatedData,
+						}),
+					});
+
+					const result = await response.json();
+
+					if (response.ok) {
+						alert(`Berkas ${fileName}.json berhasil disimpan!`);
+						// Update local cache
+						localeData[folder][fileName] = updatedData;
+					} else {
+						alert(`Kesalahan: ${result.error || 'Gagal menyimpan berkas'}`);
+					}
+				} catch (error) {
+					console.error('Error saving file:', error);
+					alert('Gagal menyimpan berkas. Pastikan server sedang berjalan.');
+				}
+			}
+
+			// Download edited JSON file (backup/export function)
+			function downloadFile(event, folder, fileName) {
+				event.stopPropagation();
+
+				const section = event.target.closest('.file-section');
+				const mixedInputs = section.querySelectorAll('.mixed-input-container');
+
+				// Build the updated JSON object
+				const updatedData = {};
+
+				mixedInputs.forEach((container) => {
+					const key = container.getAttribute('data-key');
+					const value = reconstructTextFromSegments(container);
+					setNestedValue(updatedData, key, value);
+				});
+
+				// Create and download the file
+				const jsonStr = JSON.stringify(updatedData, null, 2);
+				const blob = new Blob([jsonStr], { type: 'application/json' });
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.href = url;
+				a.download = `${fileName}.json`;
+				document.body.appendChild(a);
+				a.click();
+				document.body.removeChild(a);
+				URL.revokeObjectURL(url);
+			}
+
+			// Set nested value in object using dot notation
+			function setNestedValue(obj, path, value) {
+				const keys = path.split('.');
+				let current = obj;
+
+				for (let i = 0; i < keys.length - 1; i++) {
+					const key = keys[i];
+					if (!current[key]) {
+						current[key] = {};
+					}
+					current = current[key];
+				}
+
+				current[keys[keys.length - 1]] = value;
+			}
+
+			// Escape HTML to prevent XSS
+			function escapeHtml(text) {
+				const div = document.createElement('div');
+				div.textContent = text;
+				return div.innerHTML;
+			}
+
+			// Escape attribute values
+			function escapeAttribute(text) {
+				return text
+					.replace(/&/g, '&amp;')
+					.replace(/"/g, '&quot;')
+					.replace(/'/g, '&#39;')
+					.replace(/</g, '&lt;')
+					.replace(/>/g, '&gt;');
+			}
+
+			// Load initial data
+			(async () => {
+				await loadStructure();
+				loadLocaleFolder('pecan');
+			})();
+		</script>
+	</body>
 </html>

@@ -1,0 +1,73 @@
+{
+  "pageHeader": "Reading Page",
+  "loadingBook": "Loading book...",
+  "preparingPages": "Preparing pages...",
+  "loadBookFailed": "Failed to load book",
+  "readHelper": {
+    "home": "Home",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "zoomMax": "Maximum Zoom Reached",
+    "zoomMin": "Minimum Zoom Reached",
+    "zoomReset": "Reset Zoom",
+    "zoom": "Zoom",
+    "more": "More options",
+    "firstPage": "Go to First Page",
+    "lastPage": "Go to Last Page",
+    "download": "Download PDF",
+    "share": "share",
+    "enterFullscreen": "Enter Fullscreen",
+    "closeFullscreen": "Close Fullscreen",
+    "report": "Report"
+  },
+  "copyrightSection": {
+    "title": "This book is copyrighted",
+    "description": "You are reading a commercially licensed book. Piracy is illegal. If this content is copied, recorded, or published, violators will face the full consequences under applicable law.",
+    "accept": "Understand"
+  },
+  "unsupported": {
+    "title": "Screen size not supported",
+    "description": "This screen is too small for reading books. Please rotate the device to landscape mode or use a device with a larger screen."
+  },
+  "landscapePrompt": {
+    "title": "Please rotate your device",
+    "description": "For better reading experience, use landscape mode"
+  },
+  "outFocus": {
+    "title": "Let's Get Back to Reading!",
+    "description": "It seems your attention has been diverted. Click/tap anywhere to continue reading.",
+    "descriptionLine1": "It seems your attention has been diverted.",
+    "descriptionLine2": "Click/tap anywhere",
+    "descriptionLine3": "to continue reading."
+  },
+  "downloadConfirm": {
+    "title": "Download Book?",
+    "descriptionSmall": "This will download book {{bookName}} (estimated {{size}}, {{pageCount}} pages).",
+    "descriptionLarge": "⚠️ This book is large with {{pageCount}} pages (estimated {{size}}). Download may take several minutes.",
+    "confirm": "Download",
+    "cancel": "Cancel"
+  },
+  "downloadState": {
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "canceled": "Download canceled",
+    "licensed": "Licensed books cannot be downloaded",
+    "loading": "Downloading...",
+    "generate": "Generating PDF document...",
+    "generateDirectURL": "Generating PDF document with direct URLs...",
+    "warningSize": "This book has {{pageCount}} pages (estimated {{estimatedSize}}). Download may take several minutes on slow connections.",
+    "finalize": "Finalizing PDF...",
+    "success": "Downloaded {{filename}}",
+    "downloadingPage": "Downloading pages {{i}}-{{batchEnd}} of {{total}}...",
+    "downloaded": "Downloaded {{batchEnd}} of {{total}} pages",
+    "noPages": "Book has no pages to download",
+    "noPreview": "Page {{pageNumber}} has no preview image",
+    "failedLoad": "Failed to load book pages. Check your internet connection.",
+    "failedLoadPage": "Failed to load page {{pageNumber}}",
+    "failedFetch": "Failed to fetch page {{pageNumber}}",
+    "failedGenerate": "Failed to generate PDF",
+    "failedDownload": "Failed to download book",
+    "missingImage": "Missing image data for page {{pageNumber}}",
+    "memoryIssue": "Insufficient memory to generate PDF. Try downloading a smaller book or use a desktop browser."
+  }
+}
