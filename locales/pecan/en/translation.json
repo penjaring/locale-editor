@@ -18,6 +18,8 @@
   "of": "of",
   "previous": "Previous",
   "next": "Next",
+  "preview": "Preview",
+  "previewTranslation": "Preview Translation",
   "confirmPublishTitle": "Confirm Publish",
   "confirmPublishDescription": "Are you sure you want to publish this translation? This action will make the translation available to all users.",
   "confirmLeaveWithoutSavingTitle": "Unsaved Changes",
