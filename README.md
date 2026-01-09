@@ -184,7 +184,3 @@ Common language codes:
 - `ru` - Russian
 
 For a complete list, visit: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-
-## License
-
-This project is private and proprietary.
