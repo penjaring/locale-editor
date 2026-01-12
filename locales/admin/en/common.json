@@ -28,5 +28,7 @@
     "settings": "Settings",
     "settingsGeneral": "General",
     "settingsSystem": "System"
-  }
+  },
+  "cancel": "Cancel",
+  "create": "Create"
 }

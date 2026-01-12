@@ -28,5 +28,7 @@
     "settings": "Pengaturan",
     "settingsGeneral": "Umum",
     "settingsSystem": "Sistem"
-  }
+  },
+  "cancel": "Batal",
+  "create": "Buat"
 }
