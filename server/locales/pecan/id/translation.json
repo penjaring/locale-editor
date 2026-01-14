@@ -25,5 +25,11 @@
   "confirmLeaveWithoutSavingTitle": "Perubahan Belum Disimpan",
   "confirmLeaveWithoutSavingDescription": "Anda memiliki perubahan yang belum disimpan. Apakah Anda yakin ingin meninggalkan tanpa menyimpan?",
   "leaveWithoutSaving": "Tinggalkan Tanpa Menyimpan",
-  "saveAndLeave": "Simpan dan Tinggalkan"
+  "saveAndLeave": "Simpan dan Tinggalkan",
+  "recoveryDialog": {
+    "title": "Draf tidak tersimpan ditemukan",
+    "description": "Kami menemukan draf terjemahan yang belum disimpan. Apa yang ingin Anda lakukan?",
+    "restore": "Pulihkan Draf",
+    "discard": "Buang Draf"
+  }
 }

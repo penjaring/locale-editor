@@ -85,12 +85,14 @@
     "openInNewTab": "Open in New Tab",
     "close": "Close"
   },
+  "hardDeleteWarning": "This action cannot be undone. All associated files and data will be permanently removed from the database and storage, including: video file and thumbnail.",
   "tabs": {
     "kosaisyarat": "Kosaisyarat",
     "deleted": "Deleted"
   },
   "deleted": {
     "unauthorized": "You do not have permission to view deleted kosaisyarat.",
+    "searchPlaceholder": "Search deleted kosaisyarat...",
     "empty": {
       "title": "No deleted kosaisyarat",
       "description": "No kosaisyarat have been deleted yet."

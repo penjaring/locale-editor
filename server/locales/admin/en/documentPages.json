@@ -119,9 +119,11 @@
   "editCategorySuccess": "Category updated successfully",
   "deleteCategorySuccess": "Category deleted successfully",
   "deleteCategoryError": "Failed to delete category",
+  "categoryLabel": "Category",
   "export": "Export",
   "exportSuccess": "Documents exported successfully",
   "exportError": "Failed to export documents",
+  "hardDeleteWarning": "This action cannot be undone. All associated files and data will be permanently removed from the database and storage, including: document file and cover image.",
   "sortByLikes": "Likes",
   "noYearsAvailable": "No years available",
   "filterDateRange": "Select date range",
@@ -151,6 +153,7 @@
   },
   "deleted": {
     "unauthorized": "You do not have permission to view deleted documents.",
+    "searchPlaceholder": "Search deleted documents...",
     "empty": {
       "title": "No deleted documents",
       "description": "No documents have been deleted yet."

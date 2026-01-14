@@ -121,9 +121,11 @@
   "filterHighLikes": "High Likes (≥50)",
   "clearFilters": "Clear Filters",
   "clearAllFilters": "Clear All",
+  "details": "Details",
   "export": "Export",
   "exportSuccess": "Video books exported successfully",
   "exportError": "Failed to export video books",
+  "hardDeleteWarning": "This action cannot be undone. All associated files and data will be permanently removed from the database and storage, including: video file and thumbnail.",
   "empty": {
     "title": "No audio video books found",
     "description": "Get started by creating a new audio video book."
@@ -131,7 +133,12 @@
   "dialog": {
     "videoNotFound": "Video not found",
     "noVideoUrl": "No video URL available",
-    "authorLabel": "Author:"
+    "authorLabel": "Author:",
+    "illustratorLabel": "Illustrator",
+    "translatorLabel": "Translator",
+    "narratorLabel": "Narrator",
+    "publisherLabel": "Publisher",
+    "signLanguageInterpreterLabel": "Sign Language Interpreter"
   },
   "share": {
     "share": "Share",
@@ -166,6 +173,7 @@
   },
   "deleted": {
     "unauthorized": "You do not have permission to view deleted audio video books.",
+    "searchPlaceholder": "Search deleted audio video books...",
     "empty": {
       "title": "No deleted audio video books",
       "description": "No audio video books have been deleted yet."

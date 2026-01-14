@@ -85,12 +85,14 @@
     "openInNewTab": "Buka di Tab Baru",
     "close": "Tutup"
   },
+  "hardDeleteWarning": "Tindakan ini tidak dapat dibatalkan. Semua file dan data terkait akan dihapus secara permanen dari database dan penyimpanan, termasuk: file video dan thumbnail.",
   "tabs": {
     "kosaisyarat": "Kosaisyarat",
     "deleted": "Dihapus"
   },
   "deleted": {
     "unauthorized": "Anda tidak memiliki izin untuk melihat kosaisyarat yang dihapus.",
+    "searchPlaceholder": "Cari kosaisyarat yang dihapus...",
     "empty": {
       "title": "Tidak ada kosaisyarat yang dihapus",
       "description": "Belum ada kosaisyarat yang dihapus."

@@ -68,5 +68,13 @@
     "a4": "You can report the translation by clicking the \"Report\" button located at the bottom of the translation you are reading, then fill in the title and report details. After that, click \"Submit\".",
     "q5": "How to Create an Account on the Penjaring Website",
     "q6": "How to Read Books on the Penjaring Website"
+  },
+  "share": {
+    "label": "Share",
+    "x": "Share on X",
+    "facebook": "Share on Facebook",
+    "whatsapp": "Share on WhatsApp",
+    "copyLink": "Copy Link",
+    "copied": "Copied!"
   }
 }

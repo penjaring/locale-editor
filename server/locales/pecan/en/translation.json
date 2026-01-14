@@ -25,5 +25,11 @@
   "confirmLeaveWithoutSavingTitle": "Unsaved Changes",
   "confirmLeaveWithoutSavingDescription": "You have unsaved changes. Are you sure you want to leave without saving?",
   "leaveWithoutSaving": "Leave Without Saving",
-  "saveAndLeave": "Save and Leave"
+  "saveAndLeave": "Save and Leave",
+  "recoveryDialog": {
+    "title": "Unsaved Draft Found",
+    "description": "We found an unsaved translation draft. What would you like to do?",
+    "restore": "Restore Draft",
+    "discard": "Discard Draft"
+  }
 }
