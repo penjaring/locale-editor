@@ -344,7 +344,9 @@
     "description": "Deskripsi",
     "descriptionPlaceholder": "Masukkan deskripsi kategori",
     "createdAt": "Dibuat Pada",
-    "actions": "Aksi"
+    "actions": "Aksi",
+    "dragDropImage": "Seret dan lepas gambar di sini, atau klik untuk memilih",
+    "imageFormatHint": "PNG atau JPG, maks 5MB"
   },
   "deleteCategorySuccess": "Kategori berhasil dihapus",
   "deleteCategoryError": "Gagal menghapus kategori",
@@ -465,8 +467,24 @@
   },
   "common": {
     "cancel": "Batal",
-    "create": "Buat"
+    "create": "Buat",
+    "loading": "Memuat...",
+    "save": "Simpan"
   },
+  "save": "Simpan",
+  "previewBook": "Pratinjau Buku",
+  "more": "Opsi lainnya",
+  "enterFullscreen": "Masuk Mode Layar Penuh",
+  "firstPage": "Halaman Pertama",
+  "lastPage": "Halaman Terakhir",
+  "zoomMin": "Zoom minimum",
+  "back": "Kembali",
+  "zoomIn": "Perbesar",
+  "loadingBook": "Memuat buku...",
+  "preparingPages": "Menyiapkan halaman...",
+  "saveAsDraft": "Simpan sebagai Draft",
+  "saveAndPublish": "Simpan dan Publish",
+  "hardDeleteWarning": "Tindakan ini tidak dapat dibatalkan. Semua file dan data terkait akan dihapus secara permanen dari database dan penyimpanan, termasuk: PDF buku, gambar buku, gambar sampul, teks gambar sampul, terjemahan, riwayat membaca, bookmark, rating, dan relasi kategori.",
   "adminBalaiDefaultLicense": "Lisensi default (CC-BY-NC-SA) dipilih otomatis untuk buku Dwibahasa.",
   "licenseNotFoundError": "Lisensi CC-BY-NC-SA yang diperlukan tidak ditemukan. Silakan hubungi administrator."
 }

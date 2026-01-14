@@ -232,6 +232,7 @@
 	},
 	"deleted": {
 		"unauthorized": "You do not have permission to view deleted users.",
+		"searchPlaceholder": "Search deleted users by email or name...",
 		"empty": {
 			"title": "No deleted users",
 			"description": "No users have been deleted yet."
@@ -260,7 +261,7 @@
 		"hardDeleteError": "Failed to permanently delete user",
 		"permanentDeleteWarning": "This action cannot be undone. All associated files and data (books, video books, kosaisyarat, book translations, and all related user data) will be permanently removed from the database and storage.",
 		"cancel": "Cancel",
-		"forceDeleteLabel": "Force delete (delete all related data)",
+		"forceDeleteLabel": "Delete related data automatically (books, video books, kosaisyarat, translations)",
 		"forceDeleteWarning": "WARNING: This will permanently delete ALL related data including books, video books, kosaisyarat, translations, and all other user data. This action CANNOT be undone."
 	},
 	"insufficientAccess": "You are not allowed to delete this user.",
@@ -281,5 +282,10 @@
 	"verificationResent": "Verification email resent successfully",
 	"resendFailed": "Failed to resend email",
 	"migrated": "Migrated",
-	"oldUserTooltip": "This user was migrated from the old system and uses a different activation flow"
+	"oldUserTooltip": "This user was migrated from the old system and uses a different activation flow",
+	"lastActions": "Last Actions",
+	"noLastActions": "No recent actions",
+	"contentCreation": "Content Creation",
+	"activityLog": "Activity Log",
+	"noActivityLog": "No activity log available"
 }

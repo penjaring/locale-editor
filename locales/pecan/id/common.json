@@ -68,5 +68,13 @@
     "a4": "Kamu bisa melaporkan terjemahan dengan klik tombol \"Lapor\" yang terletak di bagian bawah terjemahan yang sedang kamu baca, kemudian isi judul dan detail laporan. Setelah itu, klik \"Kirim\".",
     "q5": "Cara Membuat Akun di Laman Penjaring",
     "q6": "Cara Membaca Buku di Laman Penjaring"
+  },
+  "share": {
+    "label": "Bagikan",
+    "x": "Bagikan di X",
+    "facebook": "Bagikan di Facebook",
+    "whatsapp": "Bagikan di WhatsApp",
+    "copyLink": "Salin Tautan",
+    "copied": "Tersalin!"
   }
 }

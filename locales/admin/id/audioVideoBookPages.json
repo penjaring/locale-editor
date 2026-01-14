@@ -121,9 +121,11 @@
   "filterHighLikes": "Disukai Tinggi (≥50)",
   "clearFilters": "Hapus Filter",
   "clearAllFilters": "Hapus Semua",
+  "details": "Detail",
   "export": "Ekspor",
   "exportSuccess": "Video books berhasil diekspor",
   "exportError": "Gagal mengekspor video books",
+  "hardDeleteWarning": "Tindakan ini tidak dapat dibatalkan. Semua file dan data terkait akan dihapus secara permanen dari database dan penyimpanan, termasuk: file video dan thumbnail.",
   "empty": {
     "title": "Tidak ada audio video book ditemukan",
     "description": "Mulai dengan membuat audio video book baru."
@@ -131,7 +133,12 @@
   "dialog": {
     "videoNotFound": "Video tidak ditemukan",
     "noVideoUrl": "Tidak ada URL video",
-    "authorLabel": "Penulis:"
+    "authorLabel": "Penulis:",
+    "illustratorLabel": "Ilustrator",
+    "translatorLabel": "Penerjemah",
+    "narratorLabel": "Narator",
+    "publisherLabel": "Penerbit",
+    "signLanguageInterpreterLabel": "Penerjemah Bahasa Isyarat"
   },
   "share": {
     "share": "Bagikan",
@@ -166,6 +173,7 @@
   },
   "deleted": {
     "unauthorized": "Anda tidak memiliki izin untuk melihat buku audio video yang dihapus.",
+    "searchPlaceholder": "Cari buku audio video yang dihapus...",
     "empty": {
       "title": "Tidak ada buku audio video yang dihapus",
       "description": "Belum ada buku audio video yang dihapus."

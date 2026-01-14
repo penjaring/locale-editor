@@ -48,5 +48,7 @@
   "deleteRoleSuccess": "Peran berhasil dihapus",
   "cannotDeleteRole": "Peran ini tidak dapat dihapus. Hanya peran yang dapat dihapus yang dapat dihapus.",
   "cannotUpdateSuperadminPermissions": "Tidak dapat memperbarui izin untuk peran superadmin. Peran ini memiliki semua izin secara default.",
-  "typeToConfirm": "Ketik \"{{name}}\" untuk konfirmasi"
+  "typeToConfirm": "Ketik \"{{name}}\" untuk konfirmasi",
+  "showing": "Menampilkan",
+  "of": "dari"
 }

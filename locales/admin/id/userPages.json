@@ -232,6 +232,7 @@
 	},
 	"deleted": {
 		"unauthorized": "Anda tidak memiliki izin untuk melihat pengguna yang dihapus.",
+		"searchPlaceholder": "Cari pengguna yang dihapus berdasarkan email atau nama...",
 		"empty": {
 			"title": "Tidak ada pengguna yang dihapus",
 			"description": "Belum ada pengguna yang dihapus."
@@ -260,7 +261,7 @@
 		"hardDeleteError": "Gagal menghapus pengguna secara permanen",
 		"permanentDeleteWarning": "Tindakan ini tidak dapat dibatalkan. Semua file dan data terkait (buku, video buku, kosaisyarat, terjemahan buku, dan semua data pengguna terkait) akan dihapus secara permanen dari database dan penyimpanan.",
 		"cancel": "Batal",
-		"forceDeleteLabel": "Paksa hapus (hapus semua data terkait)",
+		"forceDeleteLabel": "Hapus data terkait secara otomatis (buku, video buku, kosaisyarat, terjemahan)",
 		"forceDeleteWarning": "PERINGATAN: Ini akan menghapus secara permanen SEMUA data terkait termasuk buku, video buku, kosaisyarat, terjemahan, dan semua data pengguna lainnya. Tindakan ini TIDAK DAPAT dibatalkan."
 	},
 	"insufficientAccess": "Anda tidak diizinkan untuk menghapus pengguna ini.",
@@ -281,5 +282,10 @@
 	"verificationResent": "Email verifikasi berhasil dikirim ulang",
 	"resendFailed": "Gagal mengirim ulang email",
 	"migrated": "Dimigrasikan",
-	"oldUserTooltip": "Pengguna ini dimigrasikan dari sistem lama dan menggunakan alur aktivasi yang berbeda"
+	"oldUserTooltip": "Pengguna ini dimigrasikan dari sistem lama dan menggunakan alur aktivasi yang berbeda",
+	"lastActions": "Aksi Terakhir",
+	"noLastActions": "Tidak ada aksi terbaru",
+	"contentCreation": "Pembuatan Konten",
+	"activityLog": "Log Aktivitas",
+	"noActivityLog": "Tidak ada log aktivitas tersedia"
 }

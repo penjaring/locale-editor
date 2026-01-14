@@ -119,9 +119,11 @@
   "editCategorySuccess": "Kategori berhasil diperbarui",
   "deleteCategorySuccess": "Kategori berhasil dihapus",
   "deleteCategoryError": "Gagal menghapus kategori",
+  "categoryLabel": "Kategori",
   "export": "Ekspor",
   "exportSuccess": "Dokumen berhasil diekspor",
   "exportError": "Gagal mengekspor dokumen",
+  "hardDeleteWarning": "Tindakan ini tidak dapat dibatalkan. Semua file dan data terkait akan dihapus secara permanen dari database dan penyimpanan, termasuk: file dokumen dan gambar sampul.",
   "sortByLikes": "Suka",
   "noYearsAvailable": "Tidak ada tahun tersedia",
   "filterDateRange": "Pilih rentang tanggal",
@@ -151,6 +153,7 @@
   },
   "deleted": {
     "unauthorized": "Anda tidak memiliki izin untuk melihat dokumen yang dihapus.",
+    "searchPlaceholder": "Cari dokumen yang dihapus...",
     "empty": {
       "title": "Tidak ada dokumen yang dihapus",
       "description": "Belum ada dokumen yang dihapus."

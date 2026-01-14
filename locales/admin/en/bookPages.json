@@ -343,7 +343,9 @@
     "description": "Description",
     "descriptionPlaceholder": "Enter category description",
     "createdAt": "Created At",
-    "actions": "Actions"
+    "actions": "Actions",
+    "dragDropImage": "Drag and drop image here, or click to select",
+    "imageFormatHint": "PNG or JPG, max 5MB"
   },
   "deleteCategorySuccess": "Category deleted successfully",
   "deleteCategoryError": "Failed to delete category",
@@ -464,8 +466,24 @@
   },
   "common": {
     "cancel": "Cancel",
-    "create": "Create"
+    "create": "Create",
+    "loading": "Loading...",
+    "save": "Save"
   },
+  "save": "Save",
+  "previewBook": "Preview Book",
+  "more": "More options",
+  "enterFullscreen": "Enter Fullscreen",
+  "firstPage": "First Page",
+  "lastPage": "Last Page",
+  "zoomMin": "Minimum zoom",
+  "back": "Back",
+  "zoomIn": "Zoom in",
+  "loadingBook": "Loading book...",
+  "preparingPages": "Preparing pages...",
+  "saveAsDraft": "Save as Draft",
+  "saveAndPublish": "Save and Publish",
+  "hardDeleteWarning": "This action cannot be undone. All associated files and data will be permanently removed from the database and storage, including: book PDF, book images, cover image, cover image text, translations, reading history, bookmarks, ratings, and category relations.",
   "adminBalaiDefaultLicense": "Default license (CC-BY-NC-SA) automatically selected for Dwibahasa books.",
   "licenseNotFoundError": "Required license CC-BY-NC-SA not found. Please contact administrator."
 }

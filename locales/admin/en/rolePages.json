@@ -48,5 +48,7 @@
   "deleteRoleSuccess": "Role deleted successfully",
   "cannotDeleteRole": "This role cannot be deleted. Only deletable roles can be removed.",
   "cannotUpdateSuperadminPermissions": "Cannot update permissions for superadmin role. This role has all permissions by default.",
-  "typeToConfirm": "Type \"{{name}}\" to confirm"
+  "typeToConfirm": "Type \"{{name}}\" to confirm",
+  "showing": "Showing",
+  "of": "of"
 }
