@@ -92,6 +92,8 @@
 		"validation": {
 			"invalidEmail": "Invalid email address",
 			"fullNameMin": "Full name must be at least 2 characters",
+			"fullNameMax": "Full name must not exceed 100 characters",
+			"noHtmlAllowed": "Special characters < and > are not allowed",
 			"roleRequired": "Role is required"
 		},
 		"errors": {
@@ -287,5 +289,7 @@
 	"noLastActions": "No recent actions",
 	"contentCreation": "Content Creation",
 	"activityLog": "Activity Log",
-	"noActivityLog": "No activity log available"
+	"noActivityLog": "No activity log available",
+	"csvFullNameTooLong": "Full name exceeds 100 characters",
+	"csvNoHtmlAllowed": "Full name contains invalid characters (< or >)"
 }

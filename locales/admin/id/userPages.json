@@ -92,6 +92,8 @@
 		"validation": {
 			"invalidEmail": "Alamat email tidak valid",
 			"fullNameMin": "Nama lengkap minimal 2 karakter",
+			"fullNameMax": "Nama lengkap tidak boleh melebihi 100 karakter",
+			"noHtmlAllowed": "Karakter khusus < dan > tidak diperbolehkan",
 			"roleRequired": "Peran wajib diisi"
 		},
 		"errors": {
@@ -287,5 +289,7 @@
 	"noLastActions": "Tidak ada aksi terbaru",
 	"contentCreation": "Pembuatan Konten",
 	"activityLog": "Log Aktivitas",
-	"noActivityLog": "Tidak ada log aktivitas tersedia"
+	"noActivityLog": "Tidak ada log aktivitas tersedia",
+	"csvFullNameTooLong": "Nama lengkap melebihi 100 karakter",
+	"csvNoHtmlAllowed": "Nama lengkap mengandung karakter tidak valid (< atau >)"
 }

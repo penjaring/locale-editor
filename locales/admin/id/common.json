@@ -30,5 +30,33 @@
     "settingsSystem": "Sistem"
   },
   "cancel": "Batal",
-  "create": "Buat"
+  "create": "Buat",
+  "errors": {
+    "rateLimit": {
+      "title": "Terlalu Banyak Percobaan",
+      "message": "Anda telah melakukan terlalu banyak permintaan. Silakan coba lagi dalam {{time}}.",
+      "generic": "Terlalu banyak permintaan. Silakan coba lagi nanti."
+    }
+  },
+  "time": {
+    "hours": "{{count}} jam",
+    "hours_plural": "{{count}} jam",
+    "minutes": "{{count}} menit",
+    "minutes_plural": "{{count}} menit",
+    "seconds": "{{count}} detik",
+    "seconds_plural": "{{count}} detik"
+  },
+  "deleteDialog": {
+    "deleteType": "Jenis Penghapusan",
+    "softDelete": "Hapus Sementara",
+    "softDeleteDescription": "Item akan ditandai sebagai dihapus tetapi dapat dipulihkan",
+    "permanentDelete": "Hapus Permanen",
+    "permanentDeleteDescription": "Item dan semua file terkait akan dihapus secara permanen",
+    "permanentDeleteConfirmation": "Saya mengerti tindakan ini bersifat permanen dan tidak dapat dibatalkan",
+    "forceDeleteDescription": "Jika dicentang, data terkait akan dihapus secara otomatis. Jika tidak, penghapusan akan gagal jika ada data terkait.",
+    "deleteFailed": "Penghapusan Gagal",
+    "relatedDataError": "Tidak dapat menghapus: pengguna memiliki data terkait. Silakan aktifkan opsi paksa hapus dan coba lagi.",
+    "enableForceRetry": "Aktifkan Paksa Hapus dan Coba Lagi",
+    "permanentlyDelete": "Hapus Permanen"
+  }
 }

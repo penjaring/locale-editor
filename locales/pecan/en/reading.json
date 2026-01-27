@@ -25,6 +25,12 @@
     "description": "You are reading a commercially licensed book. Piracy is illegal. If this content is copied, recorded, or published, violators will face the full consequences under applicable law.",
     "accept": "Understand"
   },
+  "translatedBook": {
+    "title": "This book is a translation",
+    "description": "The book you are currently reading is a translation made by other users. This translation may differ from the original version.",
+    "accept": "Understand",
+    "translatedBy": "Translated by"
+  },
   "unsupported": {
     "title": "Screen size not supported",
     "description": "This screen is too small for reading books. Please rotate the device to landscape mode or use a device with a larger screen."

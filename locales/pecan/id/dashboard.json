@@ -104,5 +104,9 @@
       "reviewer": "Pengulas",
       "admin": "Administrator"
     }
+  },
+  "validation": {
+    "fullNameContainsHtml": "Nama lengkap tidak boleh mengandung tag HTML atau karakter khusus seperti < >",
+    "occupationContainsHtml": "Pekerjaan tidak boleh mengandung tag HTML atau karakter khusus seperti < >"
   }
 }
