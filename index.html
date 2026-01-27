@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON Locale Editor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -394,7 +395,7 @@
             gap: 0;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 4px;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .language-toggle button {
@@ -416,6 +417,128 @@
             background: white;
             color: #667eea;
         }
+
+        .bulk-download-section {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bulk-download-section h3 {
+            font-size: 16px;
+            color: #495057;
+            margin: 0;
+        }
+
+        .btn-bulk-download {
+            background: #17a2b8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-bulk-download:hover {
+            background: #138496;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(23,162,184,0.3);
+        }
+
+        .btn-bulk-download:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .storage-status {
+            padding: 10px 20px;
+            background: #d1ecf1;
+            border-bottom: 1px solid #bee5eb;
+            color: #0c5460;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .storage-status.has-data {
+            background: #d4edda;
+            border-bottom: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .new-lang-form {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .new-lang-form input {
+            padding: 4px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            background: white;
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 600;
+            outline: none;
+            width: 150px;
+        }
+
+        .new-lang-form button {
+            padding: 4px 12px;
+            border: none;
+            border-radius: 3px;
+            background: white;
+            color: #667eea;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .new-lang-form button:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .custom-lang-btn {
+            position: relative;
+        }
+
+        .custom-lang-btn .remove-lang {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .custom-lang-btn:hover .remove-lang {
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -423,10 +546,8 @@
         <header>
             <div class="language-selector">
                 <label>Bahasa:</label>
-                <div class="language-toggle">
-                    <button id="lang-id" class="active" onclick="switchLanguage('id')">Bahasa Indonesia</button>
-                    <button id="lang-en" onclick="switchLanguage('en')">Bahasa Inggris</button>
-                    <button id="lang-new" onclick="switchLanguage('new')">Bahasa Baru</button>
+                <div class="language-toggle" id="languageToggle">
+                    <!-- Language buttons will be rendered here -->
                 </div>
             </div>
         </header>
@@ -441,12 +562,19 @@
         </div>
 
         <div class="tabs">
-            <button class="tab active" data-tab="pecan">Pecan</button>
+            <button class="tab" data-tab="web">Portal Utama</button>
             <button class="tab" data-tab="admin">Admin</button>
-            <button class="tab" data-tab="web">Web</button>
+            <button class="tab active" data-tab="pecan">Pecan</button>
         </div>
 
         <div id="pecan" class="tab-content active">
+            <div class="storage-status" style="display: none;"></div>
+            <div class="bulk-download-section">
+                <h3>📦 Unduh Semua File</h3>
+                <button class="btn-bulk-download" onclick="bulkDownloadFiles('pecan')">
+                    📥 Unduh Semua (ZIP)
+                </button>
+            </div>
             <div class="loading">
                 <div class="spinner"></div>
                 <p>Memuat...</p>
@@ -454,6 +582,13 @@
         </div>
 
         <div id="admin" class="tab-content">
+            <div class="storage-status" style="display: none;"></div>
+            <div class="bulk-download-section">
+                <h3>📦 Unduh Semua File</h3>
+                <button class="btn-bulk-download" onclick="bulkDownloadFiles('admin')">
+                    📥 Unduh Semua (ZIP)
+                </button>
+            </div>
             <div class="loading">
                 <div class="spinner"></div>
                 <p>Memuat...</p>
@@ -461,6 +596,13 @@
         </div>
 
         <div id="web" class="tab-content">
+            <div class="storage-status" style="display: none;"></div>
+            <div class="bulk-download-section">
+                <h3>📦 Unduh Semua File</h3>
+                <button class="btn-bulk-download" onclick="bulkDownloadFiles('web')">
+                    📥 Unduh Semua (ZIP)
+                </button>
+            </div>
             <div class="loading">
                 <div class="spinner"></div>
                 <p>Memuat...</p>
@@ -480,17 +622,130 @@
         // Store loaded data
         const localeData = {};
         let currentLanguage = 'id'; // Default to Indonesian
+        const STORAGE_KEY_PREFIX = 'locale_editor_';
+        const STORAGE_VERSION = 'v1';
+        const CUSTOM_LANGS_KEY = 'locale_editor_custom_languages';
+        let customLanguages = [];
+
+        // Load custom languages from localStorage
+        function loadCustomLanguages() {
+            const saved = localStorage.getItem(CUSTOM_LANGS_KEY);
+            if (saved) {
+                try {
+                    customLanguages = JSON.parse(saved);
+                } catch (e) {
+                    console.error('Failed to load custom languages:', e);
+                    customLanguages = [];
+                }
+            }
+        }
+
+        // Save custom languages to localStorage
+        function saveCustomLanguages() {
+            localStorage.setItem(CUSTOM_LANGS_KEY, JSON.stringify(customLanguages));
+        }
+
+        // Render language buttons
+        function renderLanguageButtons() {
+            const container = document.getElementById('languageToggle');
+            let html = '';
+            
+            // Default languages
+            html += `<button id="lang-id" class="${currentLanguage === 'id' ? 'active' : ''}" onclick="switchLanguage('id')">Bahasa Indonesia</button>`;
+            html += `<button id="lang-en" class="${currentLanguage === 'en' ? 'active' : ''}" onclick="switchLanguage('en')">Bahasa Inggris</button>`;
+            
+            // Custom languages
+            customLanguages.forEach((lang, index) => {
+                html += `<button id="lang-custom-${index}" class="custom-lang-btn ${currentLanguage === 'custom_' + index ? 'active' : ''}" onclick="switchLanguage('custom_${index}')">
+                    ${lang}
+                    <span class="remove-lang" onclick="event.stopPropagation(); removeCustomLanguage(${index})" title="Hapus bahasa">✕</span>
+                </button>`;
+            });
+            
+            // New language button/form
+            html += `<button id="lang-new" onclick="showNewLanguageForm()">+ Bahasa Baru</button>`;
+            
+            container.innerHTML = html;
+        }
+
+        // Show form to add new language
+        function showNewLanguageForm() {
+            const newBtn = document.getElementById('lang-new');
+            const form = document.createElement('div');
+            form.className = 'new-lang-form';
+            form.innerHTML = `
+                <input type="text" id="newLangInput" placeholder="Nama bahasa..." maxlength="20">
+                <button onclick="addNewLanguage()">Tambah</button>
+                <button onclick="cancelNewLanguage()">Batal</button>
+            `;
+            
+            newBtn.replaceWith(form);
+            document.getElementById('newLangInput').focus();
+            
+            // Handle Enter key
+            document.getElementById('newLangInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') addNewLanguage();
+                if (e.key === 'Escape') cancelNewLanguage();
+            });
+        }
+
+        // Add new custom language
+        function addNewLanguage() {
+            const input = document.getElementById('newLangInput');
+            const langName = input.value.trim();
+            
+            if (!langName) {
+                alert('Masukkan nama bahasa');
+                return;
+            }
+            
+            // Add to custom languages array
+            customLanguages.push(langName);
+            saveCustomLanguages();
+            
+            // Re-render buttons
+            renderLanguageButtons();
+            
+            // Switch to the new language
+            const newLangId = 'custom_' + (customLanguages.length - 1);
+            switchLanguage(newLangId);
+        }
+
+        // Cancel adding new language
+        function cancelNewLanguage() {
+            renderLanguageButtons();
+        }
+
+        // Remove custom language
+        function removeCustomLanguage(index) {
+            if (!confirm(`Hapus bahasa "${customLanguages[index]}"?`)) return;
+            
+            // Remove from array
+            customLanguages.splice(index, 1);
+            saveCustomLanguages();
+            
+            // Clear localStorage for this language
+            const langId = 'custom_' + index;
+            ['pecan', 'admin', 'web'].forEach(folder => {
+                const storageKey = `${STORAGE_KEY_PREFIX}${folder}_${langId}_${STORAGE_VERSION}`;
+                localStorage.removeItem(storageKey);
+            });
+            
+            // Re-render buttons
+            renderLanguageButtons();
+            
+            // Switch to Indonesian if we deleted the current language
+            if (currentLanguage === langId) {
+                switchLanguage('id');
+            }
+        }
 
         // Switch language function
         function switchLanguage(lang) {
-            if (lang === 'new') currentLanguage = 'en';
-            else currentLanguage = lang;
+            currentLanguage = lang;
             
-            // Update active state on buttons
-            document.querySelectorAll('.language-toggle button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.getElementById(`lang-${lang}`).classList.add('active');
+            // Re-render buttons to update active state
+            renderLanguageButtons();
             
             // Clear cached data and reload current tab
             const activeTab = document.querySelector('.tab.active');
@@ -522,13 +777,17 @@
         async function loadLocaleFolder(folder) {
             const container = document.getElementById(folder);
             const files = localeStructure[folder];
+            const storageStatusDiv = container.querySelector('.storage-status');
             
             localeData[folder] = {};
             
+            // Determine which locale to load from (custom languages use 'en' as base)
+            const sourceLanguage = currentLanguage.startsWith('custom_') ? 'en' : currentLanguage;
+            
             try {
-                // Load all JSON files for this folder
+                // Always load all JSON files from server first
                 for (const file of files) {
-                    const response = await fetch(`locales/${folder}/${currentLanguage}/${file}.json`);
+                    const response = await fetch(`locales/${folder}/${sourceLanguage}/${file}.json`);
                     if (response.ok) {
                         localeData[folder][file] = await response.json();
                     } else {
@@ -537,11 +796,54 @@
                     }
                 }
                 
-                // Render the UI
-                renderLocaleFolder(folder, container);
+                // Check if there are saved edits in localStorage
+                const storageKey = `${STORAGE_KEY_PREFIX}${folder}_${currentLanguage}_${STORAGE_VERSION}`;
+                const savedEdits = localStorage.getItem(storageKey);
+                
+                if (savedEdits) {
+                    try {
+                        const parsedEdits = JSON.parse(savedEdits);
+                        if (currentLanguage.startsWith('custom_')) {
+                            const langIndex = parseInt(currentLanguage.split('_')[1]);
+                            const langName = customLanguages[langIndex];
+                            storageStatusDiv.textContent = `✅ Memuat ${langName} dari server dengan progress tersimpan`;
+                        } else {
+                            storageStatusDiv.textContent = '✅ Memuat dari server dengan progress tersimpan';
+                        }
+                        storageStatusDiv.className = 'storage-status has-data';
+                        storageStatusDiv.style.display = 'block';
+                        // Render the UI and then apply saved edits
+                        renderLocaleFolder(folder, container, parsedEdits);
+                    } catch (e) {
+                        console.error('Failed to parse saved edits:', e);
+                        localStorage.removeItem(storageKey);
+                        storageStatusDiv.textContent = 'ℹ️ Memuat dari server (belum ada progress tersimpan)';
+                        storageStatusDiv.className = 'storage-status';
+                        storageStatusDiv.style.display = 'block';
+                        renderLocaleFolder(folder, container);
+                    }
+                } else {
+                    if (currentLanguage.startsWith('custom_')) {
+                        const langIndex = parseInt(currentLanguage.split('_')[1]);
+                        const langName = customLanguages[langIndex];
+                        storageStatusDiv.textContent = `ℹ️ Memuat ${langName} dari Bahasa Inggris (belum ada progress tersimpan)`;
+                    } else {
+                        storageStatusDiv.textContent = 'ℹ️ Memuat dari server (belum ada progress tersimpan)';
+                    }
+                    storageStatusDiv.className = 'storage-status';
+                    storageStatusDiv.style.display = 'block';
+                    renderLocaleFolder(folder, container);
+                }
             } catch (error) {
                 console.error(`Error loading ${folder}:`, error);
                 container.innerHTML = `
+                    <div class="storage-status" style="display: none;"></div>
+                    <div class="bulk-download-section">
+                        <h3>📦 Unduh Semua File</h3>
+                        <button class="btn-bulk-download" onclick="bulkDownloadFiles('${folder}')">
+                            📥 Unduh Semua (ZIP)
+                        </button>
+                    </div>
                     <div class="instructions">
                         <h3>⚠️ Tidak dapat memuat berkas</h3>
                         <p>
@@ -558,7 +860,7 @@
         }
 
         // Render locale folder UI
-        function renderLocaleFolder(folder, container) {
+        function renderLocaleFolder(folder, container, savedEdits = null) {
             const files = localeStructure[folder];
             let html = '';
             
@@ -578,13 +880,57 @@
                             </div>
                         </div>
                         <div class="file-content">
-                            ${renderKeyPairs(data, '')}
+                            ${renderKeyPairs(data, '', folder)}
                         </div>
                     </div>
                 `;
             });
             
-            container.innerHTML = html;
+            // Remove loading element if it exists
+            const loading = container.querySelector('.loading');
+            if (loading) {
+                loading.remove();
+            }
+            
+            // Remove any existing file sections
+            const existingSections = container.querySelectorAll('.file-section');
+            existingSections.forEach(section => section.remove());
+            
+            // Create a temporary container and append new content
+            const temp = document.createElement('div');
+            temp.innerHTML = html;
+            
+            // Append new file sections
+            while (temp.firstChild) {
+                container.appendChild(temp.firstChild);
+            }
+            
+            // Apply saved edits if they exist
+            if (savedEdits) {
+                applysavedEdits(container, savedEdits);
+            }
+        }
+        
+        // Apply saved edits to the rendered UI
+        function applysavedEdits(container, savedEdits) {
+            Object.entries(savedEdits).forEach(([key, value]) => {
+                const inputContainer = container.querySelector(`.mixed-input-container[data-key="${key}"]`);
+                if (inputContainer) {
+                    // Find all text segments and update their values
+                    const textSegments = inputContainer.querySelectorAll('.text-segment');
+                    const newSegments = parseTextSegments(value);
+                    let textIndex = 0;
+                    
+                    newSegments.forEach(segment => {
+                        if (segment.type === 'text' && textSegments[textIndex]) {
+                            textSegments[textIndex].value = segment.value;
+                            const width = Math.max(segment.value.length + 2, 5);
+                            textSegments[textIndex].style.width = width + 'ch';
+                            textIndex++;
+                        }
+                    });
+                }
+            });
         }
 
         // Parse text into segments (editable text and non-editable tokens)
@@ -636,10 +982,10 @@
         }
 
         // Render mixed input with editable text and non-editable tokens
-        function renderMixedInput(fullKey, valueStr) {
+        function renderMixedInput(fullKey, valueStr, folder) {
             const segments = parseTextSegments(valueStr);
             
-            let html = '<div class="mixed-input-container" data-key="' + escapeAttribute(fullKey) + '">';
+            let html = '<div class="mixed-input-container" data-key="' + escapeAttribute(fullKey) + '" data-folder="' + folder + '">';
             
             segments.forEach((segment, index) => {
                 if (segment.type === 'text') {
@@ -650,14 +996,14 @@
                                         data-segment-index="${index}"
                                         value="${escapeAttribute(segment.value)}"
                                         style="width: ${width}ch; flex: 1;"
-                                        oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'">`;
+                                        oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'; saveToLocalStorage()">`;
                     } else {
                         html += `<input type="text" 
                                         class="text-segment" 
                                         data-segment-index="${index}"
                                         value="${escapeAttribute(segment.value)}"
                                         style="width: ${width}ch;"
-                                        oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'">`;
+                                        oninput="this.style.width = Math.max(this.value.length + 2, 5) + 'ch'; saveToLocalStorage()">`;
                     }
                 } else if (segment.type === 'placeholder') {
                     html += `<span class="placeholder-token" data-segment-index="${index}">${escapeHtml(segment.value)}</span>`;
@@ -673,7 +1019,7 @@
         }
 
         // Render key-value pairs recursively
-        function renderKeyPairs(obj, prefix) {
+        function renderKeyPairs(obj, prefix, folder) {
             let html = '';
             
             for (const [key, value] of Object.entries(obj)) {
@@ -683,7 +1029,7 @@
                     html += `
                         <div class="key-pair ${prefix ? 'nested-key' : ''}">
                             <div class="key-name">${fullKey}</div>
-                            ${renderKeyPairs(value, fullKey)}
+                            ${renderKeyPairs(value, fullKey, folder)}
                         </div>
                     `;
                 } else {
@@ -701,7 +1047,7 @@
                                 </div>
                                 <div class="input-wrapper">
                                     <label class="input-label">Edit</label>
-                                    ${renderMixedInput(fullKey, valueStr)}
+                                    ${renderMixedInput(fullKey, valueStr, folder)}
                                 </div>
                             </div>
                         </div>
@@ -804,7 +1150,80 @@
                 .replace(/>/g, '&gt;');
         }
 
+        // Save all current edits to localStorage (only edited values, not original data)
+        function saveToLocalStorage() {
+            const activeTab = document.querySelector('.tab.active');
+            if (!activeTab) return;
+            
+            const folder = activeTab.getAttribute('data-tab');
+            const container = document.getElementById(folder);
+            
+            const savedEdits = {};
+            
+            // Collect all edited values as flat key-value pairs
+            const mixedInputs = container.querySelectorAll('.mixed-input-container');
+            mixedInputs.forEach(inputContainer => {
+                const key = inputContainer.getAttribute('data-key');
+                const editedValue = reconstructTextFromSegments(inputContainer);
+                savedEdits[key] = editedValue;
+            });
+            
+            const storageKey = `${STORAGE_KEY_PREFIX}${folder}_${currentLanguage}_${STORAGE_VERSION}`;
+            localStorage.setItem(storageKey, JSON.stringify(savedEdits));
+            
+            // Update storage status
+            const storageStatusDiv = container.querySelector('.storage-status');
+            if (storageStatusDiv) {
+                storageStatusDiv.textContent = '✅ Progress tersimpan secara otomatis';
+                storageStatusDiv.className = 'storage-status has-data';
+                storageStatusDiv.style.display = 'hidden';
+            }
+        }
+
+        // Bulk download all files in a tab as ZIP
+        async function bulkDownloadFiles(folder) {
+            const container = document.getElementById(folder);
+            const files = localeStructure[folder];
+            const zip = new JSZip();
+            
+            // Collect all edited files
+            files.forEach(fileName => {
+                const section = container.querySelector(`.file-section[data-file="${fileName}"]`);
+                if (!section) return;
+                
+                const mixedInputs = section.querySelectorAll('.mixed-input-container');
+                const updatedData = {};
+                
+                mixedInputs.forEach(container => {
+                    const key = container.getAttribute('data-key');
+                    const value = reconstructTextFromSegments(container);
+                    setNestedValue(updatedData, key, value);
+                });
+                
+                const jsonStr = JSON.stringify(updatedData, null, 2);
+                zip.file(`${fileName}.json`, jsonStr);
+            });
+            
+            // Generate and download ZIP
+            try {
+                const content = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(content);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${folder}_${currentLanguage}_locale.zip`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Error creating ZIP:', error);
+                alert('Gagal membuat file ZIP. Pastikan JSZip library dimuat dengan benar.');
+            }
+        }
+
         // Load initial data
+        loadCustomLanguages();
+        renderLanguageButtons();
         loadLocaleFolder('pecan');
     </script>
 </body>
