@@ -16,11 +16,49 @@
     "phone": "Phone",
     "email": "Email"
   },
+  "about": {
+    "title": "About Us",
+    "paragraph1": "Penerjemahan Daring is an official digital platform developed and managed by the Translation Working Team, the Center for Language and Literature Empowerment (Pusdaya), the Language Development and Guidance Agency (Badan Bahasa), and the Ministry of Primary and Secondary Education of the Republic of Indonesia.",
+    "paragraph2": "This platform is part of Badan Bahasa's commitment to expanding access to quality reading materials, strengthening children's literacy, and promoting language and literature through digital technology-based translation.",
+    "paragraph3": "The main focus of Online Translation is the Children's Story Translation dashboard, which displays a collection of translated children's books with STEAM (Science, Technology, Engineering, Arts, and Mathematics) themes. This collection includes",
+    "list1": "translations of children's storybooks from various countries into Indonesian; and",
+    "list2": "translations of works from various regions in Indonesia, including regional languages, as part of language protection and revitalization.",
+    "paragraph4": "This dashboard is designed to support contextual, creative, and future-oriented learning, while fostering children's interest in reading through stories that introduce science, technology, arts, and critical thinking from an early age.",
+    "paragraph5": "In addition to the children's story translation dashboard, this platform also provides",
+    "list3": "a dashboard of strategic linguistic and literary documents to support data-driven planning and policy;",
+    "list4": "a collection of literary translations as a means of diplomacy and cultural exchange; and",
+    "list5": "kosaisyarat as a form of commitment to the accessibility and inclusiveness of language services.",
+    "paragraph6": "Penerjemahan Daring was developed as a national collaboration space that connects translators, educators, literacy activists, and the wider community in one open ecosystem. Through this platform, the Language Agency strives to make translation a bridge of knowledge, a means of promoting language and literature, and a reinforcement of Indonesian children's literacy.",
+    "paragraph7": "With a spirit of public service and continuous innovation, Online Translation is directed to become a national reference center for children's story translation and linguistic-literary data management, in line with the Language Agency's vision of dignifying Indonesian language and literature at the national and global levels."
+  },
   "contact": {
     "title": "Contact Us",
     "addressLine1": "Kawasan Indonesia Peace and Security Center (IPSC)",
     "addressLine2": "Jalan Anyar Km. 4, Sukahati, Citeureup, Kabupaten Bogor, Jawa Barat",
     "phone": "(021) 29099245",
     "email": "penerjemahan(at)kemendikdasmen.go.id"
+  },
+  "partners": {
+    "title": "Our Partners",
+    "subtitle1": "Background",
+    "paragraph1": "In 2020, the Expertise and Professional Services Group (KKLP) for Translation was formed by the Head of the Language Development and Guidance Agency (Badan Bahasa). In 2021, KKLP Translation was mandated by the Minister of Education and Culture to translate 1,250 high-quality children's storybooks that could build the character of Indonesian children. At that time, the pandemic was sweeping across the globe and we were faced with new ways of communicating. Our first meeting began with a Zoom meeting with a small team from The Asia Foundation, who offered to collaborate in translating and publishing children's storybooks that highlight regional cultures and languages in Indonesia on their Let's Read website. The journey did not stop there; we also looked for other sources to fulfill the Minister's request. We ended up searching for a digital library browser that provides books with a CC by 4.0 license. That's when we found the digital library created by Pratham Books, Storyweaver. Thanks to the excellent collaboration between the Language Agency, The Asia Foundation-Let's Read, and Pratham Books-Storyweaver, KKLP Translation was able to meet and even exceed its 2021 translation target of translating 1,375 children's storybooks and publishing them online. Until 2024, the collaboration will continue with the same targets as in 2021. We hope that with more reading materials for children in Indonesia, there will be an increase in interest in reading and in preserving language and culture throughout Indonesia.",
+    "subtitle2": "Our Partners",
+    "partner1": "1. Let's Read!",
+    "partner1Desc": "Let's Read!, initiated by the literacy program Books for Asia, has had 18 representative offices in Asia since 1954, one of which is in Indonesia. The literacy program received the US Library of Congress Literacy Awards in December 2017 for its innovation in promoting literacy. Let's Read! has become a digital library for children's storybooks, presented by the literacy community and The Asia Foundation, which strives to provide children in Asia with access to knowledge about their local languages and cultures. The books on Let's Read! are freely licensed and can be used and translated into various languages in Asia.",
+    "partner2": "2. Storyweaver",
+    "partner2Desc": "Storyweaver was created by Pratham Books in 2015. Storyweaver is a platform for creating and distributing books for children who are disadvantaged in terms of access to reading materials in their native language. Storyweaver has become a digital repository of multilingual children's storybooks with open licenses sourced from global publishers and Pratham Books itself. Open licenses allow these children's storybooks to be read offline, downloaded, printed, and even reused so that every child in the world can access them. Translation tools help children read books from around the world in their native languages. The books available on Storyweaver are mostly STEM (Science, Technology, Engineering, and Mathematics) based, supporting the Merdeka Belajar (Freedom to Learn) program launched by the Minister of Education, Culture, Research, and Technology."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions (FAQ)",
+    "q1": "What is Penjaring?",
+    "a1": "Penjaring (Penerjemahan Daring) is the name of the online translation platform developed by the Agency for Language Development and Cultivation, Ministry of Education, Culture, Research, and Technology. Penjaring was created as a form of facilitation by the Language Agency to make it easier for stakeholders to access its translation products and use network-based translation features.",
+    "q2": "What features are available in Penjaring?",
+    "a2": "Penjaring has several application features, namely (1) \"Read Books\" feature, (2) \"Translate\" feature (under development), and (3) \"Inventory\" feature. All features on the Penjaring application can be accessed after the service user is registered.",
+    "q3": "Who can become a user on the Penjaring platform?",
+    "a3": "The translation products on this platform are expected to be utilized by stakeholders and service users as materials for language diplomacy, community and family literacy, language learning enrichment in schools, parallel corpus materials, and research materials.",
+    "q4": "When reading, what should be done if you find a translation containing sensitive content?",
+    "a4": "You can report the translation by clicking the \"Report\" button located at the bottom of the translation you are reading, then fill in the title and report details. After that, click \"Submit\".",
+    "q5": "How to Create an Account on the Penjaring Website",
+    "q6": "How to Read Books on the Penjaring Website"
   }
 }

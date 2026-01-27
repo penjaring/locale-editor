@@ -104,5 +104,9 @@
       "reviewer": "Reviewer",
       "admin": "Administrator"
     }
+  },
+  "validation": {
+    "fullNameContainsHtml": "Full name cannot contain HTML tags or special characters like < >",
+    "occupationContainsHtml": "Occupation cannot contain HTML tags or special characters like < >"
   }
 }

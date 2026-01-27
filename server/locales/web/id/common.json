@@ -16,11 +16,49 @@
     "phone": "Telepon",
     "email": "Pos-el (e-mail)"
   },
+  "about": {
+    "title": "Tentang Kami",
+    "paragraph1": "Penerjemahan Daring adalah platform digital resmi yang dikembangkan dan dikelola oleh Tim Kerja Penerjemahan, Pusat Pemberdayaan Bahasa dan Sastra (Pusdaya), Badan Pengembangan dan Pembinaan Bahasa (Badan Bahasa), Kementerian Pendidikan Dasar dan Menengah Republik Indonesia.",
+    "paragraph2": "Platform ini menjadi bagian dari komitmen Badan Bahasa dalam memperluas akses bacaan bermutu, memperkuat literasi anak, serta mendorong pemajuan kebahasaan dan kesastraan melalui penerjemahan berbasis teknologi digital.",
+    "paragraph3": "Fokus utama Penerjemahan Daring adalah dasbor Terjemahan Cerita Anak yang menampilkan koleksi buku anak hasil penerjemahan dengan tema STEAM (Science, Technology, Engineering, Arts, and Mathematics). Koleksi ini mencakup",
+    "list1": "terjemahan buku cerita anak dari berbagai negara ke dalam bahasa Indonesia; dan",
+    "list2": "terjemahan karya dari berbagai daerah di Indonesia, termasuk bahasa daerah, sebagai bagian dari pelindungan dan revitalisasi bahasa.",
+    "paragraph4": "Dasbor ini dirancang untuk mendukung pembelajaran yang kontekstual, kreatif, dan berorientasi masa depan, sekaligus menumbuhkan minat baca anak melalui cerita yang memperkenalkan sains, teknologi, seni, dan pemikiran kritis sejak dini.",
+    "paragraph5": "Selain dasbor terjemahan cerita anak, platform ini juga menyediakan",
+    "list3": "dasbor dokumen strategis kebahasaan dan kesastraan sebagai pendukung perencanaan dan kebijakan berbasis data;",
+    "list4": "koleksi terjemahan karya sastra sebagai sarana diplomasi dan pertukaran budaya; dan",
+    "list5": "kosaisyarat sebagai bentuk komitmen terhadap aksesibilitas dan inklusivitas layanan bahasa.",
+    "paragraph6": "Penerjemahan Daring dikembangkan sebagai ruang kolaborasi nasional yang menghubungkan penerjemah, pendidik, pegiat literasi, dan masyarakat luas dalam satu ekosistem terbuka. Melalui platform ini, Badan Bahasa berupaya menjadikan penerjemahan sebagai jembatan pengetahuan, sarana pemajuan bahasa dan sastra, serta penguat literasi anak Indonesia.",
+    "paragraph7": "Dengan semangat layanan publik dan inovasi berkelanjutan, Penerjemahan Daring diarahkan menjadi pusat rujukan nasional penerjemahan cerita anak dan pengelolaan data kebahasaan–kesastraan, sejalan dengan visi Badan Bahasa dalam memartabatkan bahasa dan sastra Indonesia di tingkat nasional dan global."
+  },
   "contact": {
     "title": "Kontak Kami",
     "addressLine1": "Kawasan Indonesia Peace and Security Center (IPSC)",
     "addressLine2": "Jalan Anyar Km. 4, Sukahati, Citeureup, Kabupaten Bogor, Jawa Barat",
     "phone": "(021) 29099245",
     "email": "penerjemahan(at)kemendikdasmen.go.id"
+  },
+  "partners": {
+    "title": "Mitra Kami",
+    "subtitle1": "Latar Belakang",
+    "paragraph1": "Pada tahun 2020, Kelompok Kepakaran dan Layanan Profesional (KKLP) Penerjemahan dibentuk oleh Kepala Badan Pengembangan dan Pembinaan Bahasa (Badan Bahasa). KKLP Penerjemahan diberikan amanat oleh Menteri Pendidikan dan Kebudayaan pada tahun 2021 untuk menerjemahkan 1.250 buku cerita anak yang berkualitas dan dapat membangun karakter anak Indonesia. Saat itu, pandemi melanda seluruh dunia dan kami dihadapkan dengan cara baru dalam berkomunikasi. Pertemuan pertama kami diawali dengan rapat melalui Zoom dengan tim kecil bersama tim The Asia Foundation yang menawarkan kerja sama dalam menerjemahkan dan memublikasikan buku-buku cerita anak dengan mengangkat budaya dan bahasa daerah di Indonesia di laman mereka Let's Read. Perjalanan tidak berhenti sampai di situ, kami pun mencari sumber lain agar dapat memenuhi permintaan dari Mas Menteri. Sampailah kami pada pencarian peramban tentang perpustakaan digital yang menyediakan buku dengan lisensi CC by 4.0. Saat itulah kami bertemu perpustakaan digital yang dibuat oleh Pratham Books, Storyweaver. Berkat kerja sama yang baik antara Badan Bahasa, The Asia Foundation-Let's Read, dan Pratham Books-Storyweaver, KKLP Penerjemahan dapat memenuhi bahkan melampaui target penerjemahan di tahun 2021 yakni menerjemahkan 1.375 buku cerita anak dan memublikasikan cerita itu secara daring. Hingga tahun 2024, kerja sama masih berlanjut dengan target yang sama seperti tahun 2021. Kami berharap dengan semakin banyaknya bahan bacaan anak di Indonesia akan meningkat pula minat baca serta minat pelestarian bahasa dan budaya di seluruh wilayah di Indonesia.",
+    "subtitle2": "Mitra Kami",
+    "partner1": "1. Let's Read!",
+    "partner1Desc": "Let's Read! yang diprakarsai oleh program literasi, Books for Asia, sejak tahun 1954 telah memiliki 18 kantor perwakilan di Asia dan salah satunya di Indonesia. Program literasi tersebut telah menerima US Library of Congress Literacy Awards pada bulan Desember 2017 atas inovasinya dalam promosi literasi. Let's Read! telah menjadi perpustakaan digital untuk buku cerita anak persembahan komunitas literasi dan The Asia Foundation yang berupaya memberikan akses kepada anak-anak di Asia untuk mendapatkan pengetahuan tentang bahasa dan budaya lokal mereka. Buku-buku di Let's Read! memiliki lisensi bebas yang dapat digunakan serta diterjemahkan ke berbagai bahasa di Asia.",
+    "partner2": "2. Storyweaver",
+    "partner2Desc": "Storyweaver diciptakan oleh Pratham Books di tahun 2015. Storyweaver menjadi sebuah platform untuk membuat dan mendistribusikan buku untuk anak-anak yang kurang beruntung dalam mendapatkan sumber bacaan dalam bahasa ibu mereka. Storyweaver telah menjadi gudang digital buku cerita anak multibahasa berlisensi terbuka yang bersumber dari penerbit global dan Pratham Books sendiri. Lisensi terbuka memungkinkan buku-buku cerita anak tersebut dapat dibaca secara luring, diunduh, dicetak, dan bahkan digunakan kembali sehingga setiap anak di dunia dapat menjangkau buku tersebut. Alat penerjemahan membantu anak-anak untuk dapat membaca buku dari berbagai belahan dunia melalui bahasa ibu mereka. Buku-buku yang ada di Storyweaver, sebagian besar berbasis STEM (Science, Technology, Engineering and Mathematics), sehingga dapat mendukung program Merdeka Belajar yang dicanangkan oleh Menteri Pendidikan, Kebudayaan, Riset, dan Teknologi."
+  },
+  "faq": {
+    "title": "Soal Sering Ditanya (SSD)",
+    "q1": "Apa itu Penjaring?",
+    "a1": "Penjaring (Penerjemahan Daring) merupakan jenama sistem informasi dan layanan penerjemahan berbasis jaringan yang dikembangkan oleh Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah. Aplikasi Penjaring dibuat sebagai bentuk fasilitasi Badan Bahasa untuk mempermudah penerima manfaat dalam mengakses produk-produk penerjemahan Badan Bahasa dan memanfaatkan layanan penerjemahan berbasis jaringan.",
+    "q2": "Fitur apa saja yang terdapat di dalam Penjaring?",
+    "a2": "Penjaring memiliki beberapa fitur aplikasi, yaitu (1) fitur \"Baca Buku\", (2) fitur \"Terjemahkan\" (sedang dalam pengembangan), dan (3) fitur \"Inventarisasi\". Semua fitur pada aplikasi Penjaring dapat diakses setelah pengguna layanan berstatus sebagai pengguna terdaftar.",
+    "q3": "Siapa yang bisa menjadi pengguna di platform Penjaring?",
+    "a3": "Produk-produk penerjemahan dalam platform ini diharapkan dapat dimanfaatkan oleh para pemangku kepentingan dan pengguna layanan sebagai bahan diplomasi kebahasaan, bahan literasi masyarakat dan keluarga, bahan pengayaan pembelajaran bahasa di sekolah, bahan korpus paralel, dan bahan penelitian.",
+    "q4": "Pada saat membaca, apa harus dilakukan bila menemukan terjemahan yang mengandung konten sensitif?",
+    "a4": "Kamu bisa melaporkan terjemahan dengan klik tombol \"Lapor\" yang terletak di bagian bawah terjemahan yang sedang kamu baca, kemudian isi judul dan detail laporan. Setelah itu, klik \"Kirim\".",
+    "q5": "Cara Membuat Akun di Laman Penjaring",
+    "q6": "Cara Membaca Buku di Laman Penjaring"
   }
 }

@@ -130,6 +130,10 @@
     "title": "No audio video books found",
     "description": "Get started by creating a new audio video book."
   },
+  "error": {
+    "title": "Error loading video books",
+    "retry": "Retry"
+  },
   "dialog": {
     "videoNotFound": "Video not found",
     "noVideoUrl": "No video URL available",

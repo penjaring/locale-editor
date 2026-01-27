@@ -30,5 +30,33 @@
     "settingsSystem": "System"
   },
   "cancel": "Cancel",
-  "create": "Create"
+  "create": "Create",
+  "errors": {
+    "rateLimit": {
+      "title": "Too Many Attempts",
+      "message": "You've made too many requests. Please try again in {{time}}.",
+      "generic": "Too many requests. Please try again later."
+    }
+  },
+  "time": {
+    "hours": "{{count}} hour",
+    "hours_plural": "{{count}} hours",
+    "minutes": "{{count}} minute",
+    "minutes_plural": "{{count}} minutes",
+    "seconds": "{{count}} second",
+    "seconds_plural": "{{count}} seconds"
+  },
+  "deleteDialog": {
+    "deleteType": "Delete Type",
+    "softDelete": "Soft Delete",
+    "softDeleteDescription": "Item will be marked as deleted but can be recovered",
+    "permanentDelete": "Permanent Delete",
+    "permanentDeleteDescription": "Item and all associated files will be permanently removed",
+    "permanentDeleteConfirmation": "I understand this action is permanent and cannot be undone",
+    "forceDeleteDescription": "If checked, related data will be automatically deleted. If unchecked, deletion will fail if related data exists.",
+    "deleteFailed": "Delete Failed",
+    "relatedDataError": "Cannot delete: user has related data. Please enable force delete option and try again.",
+    "enableForceRetry": "Enable Force Delete and Retry",
+    "permanentlyDelete": "Permanently Delete"
+  }
 }

@@ -25,6 +25,12 @@
     "description": "Kamu sedang membaca buku berlisensi komersil. Pembajakan adalah tindakan ilegal. Jika konten ini digandakan, direkam, dan dipublikasikan, pelanggar akan menghadapi konsekuensi secara penuh sesuai hukum yang berlaku.",
     "accept": "Mengerti"
   },
+  "translatedBook": {
+    "title": "Buku ini adalah buku terjemahan",
+    "description": "Buku yang Kamu baca saat ini merupakan hasil terjemahan yang dibuat oleh pengguna lain. Terjemahan ini mungkin berbeda dari versi asli.",
+    "accept": "Mengerti",
+    "translatedBy": "Diterjemahkan oleh"
+  },
   "unsupported": {
     "title": "Ukuran layar tidak didukung",
     "description": "Layar ini terlalu kecil untuk membaca buku. Harap putar perangkat ke mode lanskap atau gunakan perangkat dengan layar yang lebih besar."

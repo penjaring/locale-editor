@@ -130,6 +130,10 @@
     "title": "Tidak ada audio video book ditemukan",
     "description": "Mulai dengan membuat audio video book baru."
   },
+  "error": {
+    "title": "Error memuat video books",
+    "retry": "Coba Lagi"
+  },
   "dialog": {
     "videoNotFound": "Video tidak ditemukan",
     "noVideoUrl": "Tidak ada URL video",
